@@ -1,6 +1,23 @@
+Okay! Vamos inserir as **tags do Google Tag Manager (GTM)** no seu arquivo HTML `index.html` que você forneceu.
+
+---
+
+✅ **Aqui está o seu código HTML atualizado com as tags do GTM corretamente instaladas:**
+
+Copie e substitua todo o conteúdo do seu arquivo `index.html` pelo código abaixo:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NBHHV99N');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Streamstv - Assinatura IPTV Premium com 23k+ Canais</title>
@@ -28,13 +45,11 @@
             --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
             --shadow-glow: 0 0 15px rgba(14, 165, 233, 0.5), 0 0 30px rgba(139, 92, 246, 0.3);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-darker);
@@ -42,37 +57,30 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             line-height: 1.2;
         }
-
         p {
             color: var(--text-gray);
         }
-
         a {
             text-decoration: none;
             color: inherit;
         }
-
         img {
             max-width: 100%;
             display: block;
         }
-
         ul {
             list-style: none;
         }
-
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
-
         .btn {
             display: inline-block;
             padding: 0.8rem 1.8rem;
@@ -85,28 +93,23 @@
             letter-spacing: 0.5px;
             font-size: 0.9rem;
         }
-
         .btn-primary {
             background: var(--primary-gradient);
             color: white;
             box-shadow: var(--shadow-glow);
         }
-
         .btn-primary:hover {
             transform: scale(1.05);
             box-shadow: 0 0 25px rgba(14, 165, 233, 0.7), 0 0 40px rgba(139, 92, 246, 0.5);
         }
-
         .btn-secondary {
             background: transparent;
             color: var(--primary);
             border: 2px solid var(--primary);
         }
-
         .btn-secondary:hover {
             background: rgba(14, 165, 233, 0.1);
         }
-
         .card {
             background: var(--bg-dark-accent);
             border-radius: 16px;
@@ -115,21 +118,17 @@
             overflow: visible; /* Permite que a tag 'popular' transborde */
             position: relative; /* Necessário para o z-index funcionar */
         }
-
         .card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
         }
-
         .section {
             padding: 5rem 0;
         }
-
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
         }
-
         .section-title h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -138,13 +137,11 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .section-title p {
             max-width: 600px;
             margin: 0 auto;
             font-size: 1.1rem;
         }
-
         .section-subtitle {
             color: var(--accent);
             font-weight: 600;
@@ -153,7 +150,6 @@
             letter-spacing: 1px;
             font-size: 0.9rem;
         }
-
         /* Header */
         header {
             position: sticky;
@@ -164,13 +160,11 @@
             border-bottom: 1px solid var(--glass-border);
             padding: 1rem 0;
         }
-
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             display: flex;
             align-items: center;
@@ -178,33 +172,27 @@
             font-size: 1.5rem;
             font-weight: 700;
         }
-
         .logo i {
             color: var(--primary);
         }
-
         .logo span {
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         nav ul {
             display: flex;
             gap: 2rem;
         }
-
         .nav-link {
             position: relative;
             font-weight: 500;
             transition: color 0.3s ease;
         }
-
         .nav-link:hover {
             color: var(--primary);
         }
-
         .nav-link::after {
             content: '';
             position: absolute;
@@ -215,11 +203,9 @@
             background: var(--primary-gradient);
             transition: width 0.3s ease;
         }
-
         .nav-link:hover::after {
             width: 100%;
         }
-
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -228,7 +214,6 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-
         @media (max-width: 768px) {
             .desktop-nav {
                 display: none;
@@ -237,7 +222,6 @@
                 display: block;
             }
         }
-
         /* Hero */
         .hero {
             position: relative;
@@ -253,7 +237,6 @@
             background-position: center; /* Centraliza a imagem */
             z-index: 0; /* Camada da imagem de fundo */
         }
-
         .hero::after {
             content: '';
             position: absolute;
@@ -264,7 +247,6 @@
             background: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 0%, rgba(2, 6, 23, 0.95) 100%); /* Fade escuro do topo para a base */
             z-index: 1; /* Camada do fade, sobre a imagem */
         }
-
         .hero-content {
             position: relative; /* Garante que o conteúdo fique acima do ::after */
             z-index: 2; /* Camada do conteúdo principal */
@@ -273,7 +255,6 @@
             flex-direction: column;
             align-items: center;
         }
-
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
@@ -288,11 +269,9 @@
             background-clip: text;
             text-fill-color: transparent;
         }
-
         .hero h1 span {
             /* O span herda as propriedades do h1 */
         }
-
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 2.5rem;
@@ -301,7 +280,6 @@
             -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5);
             text-stroke: 0.5px rgba(0, 0, 0, 0.5);
         }
-
         .hero-btns {
             display: flex;
             justify-content: center;
@@ -309,11 +287,9 @@
             flex-wrap: wrap;
             margin-bottom: 3rem; /* Espaço antes das estatísticas */
         }
-
         .hero-btns .btn {
             min-width: 200px;
         }
-
         .stats {
             position: relative; /* Garante que as estatísticas também fiquem acima do ::after */
             z-index: 2; /* Camada das estatísticas */
@@ -323,11 +299,9 @@
             flex-wrap: wrap;
             margin-top: 2rem; /* Espaçamento superior para as estatísticas */
         }
-
         .stat-item {
             text-align: center;
         }
-
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
@@ -341,7 +315,6 @@
             text-fill-color: transparent;
             display: block;
         }
-
         .stat-label {
             font-size: 0.9rem;
             color: var(--text-gray);
@@ -351,7 +324,6 @@
             -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5);
             text-stroke: 0.5px rgba(0, 0, 0, 0.5);
         }
-
         @media (max-width: 768px) {
             .hero {
                 padding: 6rem 0;
@@ -377,23 +349,19 @@
                 font-size: 2rem;
             }
         }
-
         /* Features - Aumentado o padding-top */
         .features .section {
             padding: 8rem 0 5rem 0; /* Aumentado o padding-top de 4rem para 8rem */
         }
-
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-
         .feature-card {
             padding: 2rem;
             text-align: center;
         }
-
         .feature-icon {
             width: 80px;
             height: 80px;
@@ -407,33 +375,27 @@
             margin: 0 auto 1.5rem;
             font-size: 2.5rem;
         }
-
         .feature-card h3 {
             margin-bottom: 1rem;
         }
-
         /* Testimonials - Aumentado o padding-top */
         .testimonials .section {
             padding: 8rem 0 5rem 0; /* Aumentado o padding-top de 4rem para 8rem */
         }
-
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
         .testimonial-card {
             padding: 2rem;
             border-left: 4px solid var(--primary);
         }
-
         .testimonial-header {
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
         }
-
         .testimonial-avatar {
             width: 50px;
             height: 50px;
@@ -442,33 +404,27 @@
             margin-right: 1rem;
             flex-shrink: 0;
         }
-
         .testimonial-info h4 {
             margin-bottom: 0.25rem;
         }
-
         .testimonial-rating {
             color: #fbbf24; /* Yellow for stars */
         }
-
         /* Plans - Aumentado o padding-top */
         .plans .section {
             padding: 8rem 0 5rem 0; /* Aumentado o padding-top de 5rem para 8rem */
         }
-
         .plans-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
-
         .plan-card {
             padding: 3rem 2rem; /* Aumentado o padding interno */
             text-align: center;
             border: 2px solid var(--border-dark);
             z-index: 1; /* Garante que o card fique atrás da tag 'popular' */
         }
-
         .popular-tag {
             position: absolute;
             top: -12px; /* Ajuste fino para o posicionamento */
@@ -483,91 +439,74 @@
             text-transform: uppercase;
             z-index: 2; /* Garante que a tag fique acima do card */
         }
-
         .plan-card.popular {
             border-color: var(--primary);
             transform: scale(1.05);
             z-index: 10; /* Aumenta o z-index do card popular para garantir sobreposição */
         }
-
         .plan-card.popular .btn-primary {
             background: var(--primary-gradient);
         }
-
         .plan-header h3 {
             margin-bottom: 0.5rem;
         }
-
         .plan-price {
             font-size: 2.5rem; /* Ajuste de tamanho para igualar ao número */
             font-weight: 700;
             margin: 1rem 0;
         }
-
         .plan-price .number {
             font-size: 2.5rem; /* Mesmo tamanho que .plan-price */
         }
-
         .plan-price span {
             font-size: 1rem;
             color: var(--text-gray);
             margin-left: 0.5rem;
         }
-
         .plan-savings {
             color: #10b981; /* Green for savings */
             font-weight: 600;
             margin-bottom: 1.5rem;
         }
-
         .plan-features {
             list-style: none;
             margin: 2rem 0;
             text-align: left;
         }
-
         .plan-features li {
             padding: 0.5rem 0;
             display: flex;
             align-items: center;
         }
-
         .plan-features li i {
             color: var(--primary);
             margin-right: 0.75rem;
         }
-
         /* Footer */
         footer {
             background: var(--bg-dark);
             border-top: 1px solid var(--border-dark);
             padding: 4rem 0 2rem;
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
-
         .footer-col h3 {
             margin-bottom: 1.5rem;
             font-size: 1.2rem;
         }
-
         .footer-links li {
             margin-bottom: 0.75rem;
         }
-
         .footer-links a:hover {
             color: var(--primary);
         }
-
         .newsletter form {
             display: flex;
         }
-
         .newsletter input {
             flex: 1;
             padding: 0.8rem 1.2rem;
@@ -576,7 +515,6 @@
             border-radius: 8px 0 0 8px;
             color: var(--text-light);
         }
-
         .newsletter button {
             background: var(--primary-gradient);
             color: white;
@@ -586,11 +524,9 @@
             cursor: pointer;
             transition: opacity 0.3s ease;
         }
-
         .newsletter button:hover {
             opacity: 0.9;
         }
-
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -598,7 +534,6 @@
             color: var(--text-gray);
             font-size: 0.9rem;
         }
-
         /* Back to Top */
         #back-to-top {
             position: fixed;
@@ -619,24 +554,20 @@
             box-shadow: var(--shadow-glow);
             z-index: 999;
         }
-
         #back-to-top.show {
             opacity: 1;
             visibility: visible;
         }
-
         /* Animations */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-
         .animate-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         /* Mobile Menu */
         #mobile-menu {
             position: fixed;
@@ -653,18 +584,15 @@
             transform: translateX(-100%);
             transition: transform 0.3s ease;
         }
-
         #mobile-menu.active {
             display: flex;
             transform: translateX(0);
         }
-
         #mobile-menu ul {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
-
         /* Loading Spinner Placeholder for Form */
         .loading-spinner {
             display: none;
@@ -676,11 +604,15 @@
             animation: spin 1s linear infinite;
             margin: 0 auto;
         }
-
         @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBHHV99N"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -701,7 +633,6 @@
             </button>
         </div>
     </header>
-
     <!-- Mobile Menu -->
     <div id="mobile-menu">
         <ul>
@@ -711,7 +642,6 @@
             <li><a href="#plans" class="nav-link">Planos</a></li>
         </ul>
     </div>
-
     <!-- Hero -->
     <section id="home" class="hero">
         <div class="hero-content animate-on-scroll">
@@ -737,7 +667,6 @@
             </div>
         </div>
     </section>
-
     <!-- Features -->
     <section id="features" class="features">
         <div class="container">
@@ -777,7 +706,6 @@
             </div>
         </div>
     </section>
-
     <!-- Testimonials -->
     <section id="testimonials" class="testimonials">
         <div class="container">
@@ -897,7 +825,6 @@
             </div>
         </div>
     </section>
-
     <!-- Plans -->
     <section id="plans" class="plans">
         <div class="container">
@@ -973,7 +900,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1024,26 +950,21 @@
             </div>
         </div>
     </footer>
-
     <!-- Back to Top Button -->
     <button id="back-to-top"><i class="fas fa-arrow-up"></i></button>
-
     <script>
         // Mobile Menu Toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-
         mobileMenuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
         });
-
         // Close mobile menu when clicking a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
             });
         });
-
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1059,10 +980,8 @@
                 }
             });
         });
-
         // Back to Top Button
         const backToTopButton = document.getElementById('back-to-top');
-
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 500) {
                 backToTopButton.classList.add('show');
@@ -1070,19 +989,16 @@
                 backToTopButton.classList.remove('show');
             }
         });
-
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-
         // Animation on Scroll
         const observerOptions = {
             threshold: 0.1,
         };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1090,11 +1006,9 @@
                 }
             });
         }, observerOptions);
-
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
-
         // Animated Counters for Stats
         const statElements = document.querySelectorAll('.stat-number[data-target]');
         const statObserver = new IntersectionObserver((entries) => {
@@ -1105,7 +1019,6 @@
                     const duration = 2000; // ms
                     const increment = targetValue / (duration / 16); // 16ms per frame approx
                     let current = 0;
-
                     const updateCounter = () => {
                         current += increment;
                         if (current < targetValue) {
@@ -1115,15 +1028,22 @@
                             targetElement.textContent = targetValue.toLocaleString();
                         }
                     };
-
                     updateCounter();
                     statObserver.unobserve(entry.target); // Run only once
                 }
             });
         }, { threshold: 0.5 });
-
         statElements.forEach(el => statObserver.observe(el));
     </script>
 </body>
 </html>
+```
 
+---
+
+📌 **Explicação das alterações:**
+
+1.  **No `<head>`:** Adicionei o **script do Google Tag Manager** logo **após a tag de abertura `<head>`**, conforme recomendado.
+2.  **No início do `<body>`:** Adicionei a **tag `<noscript>` do Google Tag Manager** logo **após a tag de abertura `<body>`**, conforme recomendado.
+
+Agora, o Google Tag Manager está corretamente instalado no seu site `index.html`. Ele irá carregar e permitirá que você gerencie outras tags (como o Google Analytics) a partir do painel do GTM.
