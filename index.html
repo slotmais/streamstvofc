@@ -425,17 +425,25 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin: 1rem 0;
-            display: flex;
-            flex-direction: column; /* Coloca o número e o período em coluna */
-            align-items: center;
+            display: flex; /* Usar flexbox */
+            flex-direction: column; /* Colocar itens em coluna */
+            align-items: center; /* Centralizar horizontalmente */
+        }
+        .plan-price .value-container {
+            display: flex; /* R$ e valor na mesma linha */
+            align-items: baseline; /* Alinhar pela base */
+            gap: 0.25rem; /* Espaçamento pequeno entre R$ e valor */
+        }
+        .plan-price .currency {
+            font-size: 1.5rem; /* Tamanho menor para R$ */
         }
         .plan-price .number {
-            font-size: 2.5rem;
+            font-size: 2.5rem; /* Tamanho do número */
         }
-        .plan-price span {
+        .plan-price .period {
             font-size: 1rem;
             color: var(--text-gray);
-            margin-top: 0.25rem; /* Espaçamento entre o preço e o período */
+            margin-top: 0.5rem; /* Espaçamento acima do período */
         }
         .plan-savings {
             color: #10b981;
@@ -743,8 +751,11 @@
                     <div class="plan-header">
                         <h3>Plano Mensal</h3>
                         <div class="plan-price">
-                            <div>R$ <span class="number">29,00</span></div>
-                            <span>mês</span>
+                            <div class="value-container">
+                                <span class="currency">R$</span>
+                                <span class="number">29,00</span>
+                            </div>
+                            <span class="period">mês</span>
                         </div>
                     </div>
                     <ul class="plan-features">
@@ -762,8 +773,11 @@
                     <div class="plan-header">
                         <h3>Plano Trimestral</h3>
                         <div class="plan-price">
-                            <div>R$ <span class="number">79,00</span></div>
-                            <span>3 meses</span>
+                            <div class="value-container">
+                                <span class="currency">R$</span>
+                                <span class="number">79,00</span>
+                            </div>
+                            <span class="period">3 meses</span>
                         </div>
                         <div class="plan-savings">Economize R$ 8,00</div>
                     </div>
@@ -781,8 +795,11 @@
                     <div class="plan-header">
                         <h3>Plano Semestral</h3>
                         <div class="plan-price">
-                            <div>R$ <span class="number">149,90</span></div>
-                            <span>6 meses</span>
+                            <div class="value-container">
+                                <span class="currency">R$</span>
+                                <span class="number">149,90</span>
+                            </div>
+                            <span class="period">6 meses</span>
                         </div>
                         <div class="plan-savings">Economize R$ 24,10</div>
                     </div>
@@ -800,17 +817,20 @@
                     <div class="plan-header">
                         <h3>Plano Anual</h3>
                         <div class="plan-price">
-                            <div>R$ <span class="number">280,00</span></div>
-                            <span>6 meses</span>
+                            <div class="value-container">
+                                <span class="currency">R$</span>
+                                <span class="number">280,00</span>
+                            </div>
+                            <span class="period">12 meses</span>
                         </div>
                         <div class="plan-savings">Economize R$ 68,00</div>
                     </div>
                     <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 6 Meses de Acesso</li>
+                        <li><i class="fas fa-check"></i> 12 Meses de Acesso</li>
                         <li><i class="fas fa-check"></i> Conteúdo variado</li>
                         <li><i class="fas fa-check"></i> Canais ao Vivo</li>
                         <li><i class="fas fa-check"></i> Qualidade Full HD</li>
-                        <li><i class="fas fa-check"></i> Acesso em 4 Dispositivos</li>
+                        <li><i class="fas fa-check"></i> Acesso em 6 Dispositivos</li>
                         <li><i class="fas fa-check"></i> Suporte 24h Prioritário</li>
                     </ul>
                     <a href="https://wa.me/5587996255711?text=Olá,%20gostaria%20de%20assinar%20o%20plano%20Anual%20no%20valor%20de%20R%24%20280,00." class="btn btn-primary">Assinar Agora</a>
