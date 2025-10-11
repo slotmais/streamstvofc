@@ -361,7 +361,25 @@
         }
         @media (max-width: 768px) {
             .plans-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 colunas no mobile */
+                grid-template-columns: 1fr; /* 1 coluna no mobile */
+                gap: 1.5rem; /* Espaçamento reduzido */
+            }
+            .plan-card {
+                padding: 2rem; /* Padding reduzido */
+                margin: 0 1rem; /* Centralizado com margem */
+            }
+            .plan-price {
+                font-size: 2rem; /* Menor no mobile */
+            }
+            .plan-price .number {
+                font-size: 2rem;
+            }
+            .plan-features {
+                font-size: 0.9rem; /* Menor fonte nos recursos */
+            }
+            .popular-tag {
+                top: -10px;
+                font-size: 0.7rem; /* Menor no mobile */
             }
         }
         .plan-card {
@@ -697,24 +715,6 @@
                         </div>
                     </div>
                     <p>"A variedade de filmes e séries é incrível. Economizei dinheiro e ainda tenho mais opções do que antes."</p>
-                </div>
-                <div class="card testimonial-card animate-on-scroll">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Cliente">
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>Carlos Eduardo</h4>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Interface moderna, conteúdo atualizado e suporte excelente. Vale cada centavo investido!"</p>
                 </div>
             </div>
         </div>
