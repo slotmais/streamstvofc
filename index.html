@@ -425,6 +425,9 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin: 1rem 0;
+            display: flex;
+            flex-direction: column; /* Coloca o número e o período em coluna */
+            align-items: center;
         }
         .plan-price .number {
             font-size: 2.5rem;
@@ -432,7 +435,7 @@
         .plan-price span {
             font-size: 1rem;
             color: var(--text-gray);
-            margin-left: 0.5rem;
+            margin-top: 0.25rem; /* Espaçamento entre o preço e o período */
         }
         .plan-savings {
             color: #10b981;
@@ -739,7 +742,10 @@
                 <div class="card plan-card animate-on-scroll">
                     <div class="plan-header">
                         <h3>Plano Mensal</h3>
-                        <div class="plan-price">R$ <span class="number">29,00</span><span>/mês</span></div>
+                        <div class="plan-price">
+                            R$ <span class="number">29,00</span>
+                            <span>/mês</span>
+                        </div>
                     </div>
                     <ul class="plan-features">
                         <li><i class="fas fa-check"></i> 1 Mês de Acesso</li>
@@ -755,7 +761,10 @@
                     <div class="popular-tag">Mais Popular</div>
                     <div class="plan-header">
                         <h3>Plano Trimestral</h3>
-                        <div class="plan-price">R$ <span class="number">79,00</span><span>/3 meses</span></div>
+                        <div class="plan-price">
+                            R$ <span class="number">79,00</span>
+                            <span>/3 meses</span>
+                        </div>
                         <div class="plan-savings">Economize R$ 8,00</div>
                     </div>
                     <ul class="plan-features">
@@ -771,7 +780,10 @@
                 <div class="card plan-card animate-on-scroll">
                     <div class="plan-header">
                         <h3>Plano Semestral</h3>
-                        <div class="plan-price">R$ <span class="number">149,90</span><span>/6 meses</span></div>
+                        <div class="plan-price">
+                            R$ <span class="number">149,90</span>
+                            <span>/6 meses</span>
+                        </div>
                         <div class="plan-savings">Economize R$ 24,10</div>
                     </div>
                     <ul class="plan-features">
@@ -787,7 +799,10 @@
                 <div class="card plan-card animate-on-scroll">
                     <div class="plan-header">
                         <h3>Plano Anual</h3>
-                        <div class="plan-price">R$ <span class="number">280,00</span><span>/12 meses</span></div>
+                        <div class="plan-price">
+                            R$ <span class="number">280,00</span>
+                            <span>/12 meses</span>
+                        </div>
                         <div class="plan-savings">Economize R$ 68,00</div>
                     </div>
                     <ul class="plan-features">
