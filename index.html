@@ -8,17 +8,16 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-NBHHV99N');</script>
     <!-- End Google Tag Manager -->
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Streamstv - Assinatura IPTV Premium com 23k+ Canais</title>
-    <meta name="description" content="O melhor serviço de IPTV premium com 3.000 canais, 20.000 filmes e séries, streamings inclusos, qualidade 4K e conexões ilimitadas.">
+    <title>Streamstv - Aplicativo de Streaming Completo</title>
+    <meta name="description" content="O melhor aplicativo de streaming com filmes, séries e canais ao vivo. Qualidade premium, interface moderna e entretenimento ilimitado.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset e Base */
+        /* Seu CSS permanece o mesmo */
         :root {
             --bg-dark: #0a0a0a;
             --bg-darker: #0f0f15;
@@ -106,8 +105,8 @@
             border-radius: 16px;
             box-shadow: var(--shadow-card);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: visible; /* Permite que a tag 'popular' transborde */
-            position: relative; /* Necessário para o z-index funcionar */
+            overflow: visible;
+            position: relative;
         }
         .card:hover {
             transform: translateY(-8px);
@@ -141,7 +140,6 @@
             letter-spacing: 1px;
             font-size: 0.9rem;
         }
-        /* Header */
         header {
             position: sticky;
             top: 0;
@@ -213,7 +211,6 @@
                 display: block;
             }
         }
-        /* Hero */
         .hero {
             position: relative;
             padding: 8rem 0;
@@ -223,10 +220,10 @@
             justify-content: center;
             text-align: center;
             overflow: hidden;
-            background: img:  /* NOVA Imagem de fundo */
-            background-size: cover; /* Garante cobertura total */
-            background-position: center; /* Centraliza a imagem */
-            z-index: 0; /* Camada da imagem de fundo */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
         }
         .hero::after {
             content: '';
@@ -235,12 +232,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 0%, rgba(2, 6, 23, 0.95) 100%); /* Fade escuro do topo para a base */
-            z-index: 1; /* Camada do fade, sobre a imagem */
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 0%, rgba(2, 6, 23, 0.95) 100%);
+            z-index: 1;
         }
         .hero-content {
-            position: relative; /* Garante que o conteúdo fique acima do ::after */
-            z-index: 2; /* Camada do conteúdo principal */
+            position: relative;
+            z-index: 2;
             max-width: 800px;
             display: flex;
             flex-direction: column;
@@ -250,24 +247,19 @@
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.1;
-            /* Efeito de contorno para melhor legibilidade */
             -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
             text-stroke: 1px rgba(0, 0, 0, 0.5);
-            color: white; /* Cor base antes do gradiente */
+            color: white;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
         }
-        .hero h1 span {
-            /* O span herda as propriedades do h1 */
-        }
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 2.5rem;
             color: var(--text-light);
-            /* Efeito de contorno para melhor legibilidade */
             -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5);
             text-stroke: 0.5px rgba(0, 0, 0, 0.5);
         }
@@ -276,44 +268,10 @@
             justify-content: center;
             gap: 1.5rem;
             flex-wrap: wrap;
-            margin-bottom: 3rem; /* Espaço antes das estatísticas */
+            margin-bottom: 3rem;
         }
         .hero-btns .btn {
             min-width: 200px;
-        }
-        .stats {
-            position: relative; /* Garante que as estatísticas também fiquem acima do ::after */
-            z-index: 2; /* Camada das estatísticas */
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 2rem; /* Espaçamento superior para as estatísticas */
-        }
-        .stat-item {
-            text-align: center;
-        }
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            /* Efeito de contorno para melhor legibilidade */
-            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
-            text-stroke: 1px rgba(0, 0, 0, 0.5);
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            display: block;
-        }
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            /* Efeito de contorno para melhor legibilidade */
-            -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5);
-            text-stroke: 0.5px rgba(0, 0, 0, 0.5);
         }
         @media (max-width: 768px) {
             .hero {
@@ -333,16 +291,9 @@
                 width: 100%;
                 max-width: 300px;
             }
-            .stats {
-                gap: 1.5rem;
-            }
-            .stat-number {
-                font-size: 2rem;
-            }
         }
-        /* Features - Aumentado o padding-top */
         .features .section {
-            padding: 8rem 0 5rem 0; /* Aumentado o padding-top de 4rem para 8rem */
+            padding: 8rem 0 5rem 0;
         }
         .features-grid {
             display: grid;
@@ -369,9 +320,8 @@
         .feature-card h3 {
             margin-bottom: 1rem;
         }
-        /* Testimonials - Aumentado o padding-top */
         .testimonials .section {
-            padding: 8rem 0 5rem 0; /* Aumentado o padding-top de 4rem para 8rem */
+            padding: 8rem 0 5rem 0;
         }
         .testimonials-grid {
             display: grid;
@@ -399,26 +349,30 @@
             margin-bottom: 0.25rem;
         }
         .testimonial-rating {
-            color: #fbbf24; /* Yellow for stars */
+            color: #fbbf24;
         }
-        /* Plans - Aumentado o padding-top */
         .plans .section {
-            padding: 8rem 0 5rem 0; /* Aumentado o padding-top de 5rem para 8rem */
+            padding: 8rem 0 5rem 0;
         }
         .plans-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr); /* 4 colunas no desktop */
             gap: 2rem;
         }
+        @media (max-width: 768px) {
+            .plans-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 colunas no mobile */
+            }
+        }
         .plan-card {
-            padding: 3rem 2rem; /* Aumentado o padding interno */
+            padding: 3rem 2rem;
             text-align: center;
             border: 2px solid var(--border-dark);
-            z-index: 1; /* Garante que o card fique atrás da tag 'popular' */
+            z-index: 1;
         }
         .popular-tag {
             position: absolute;
-            top: -12px; /* Ajuste fino para o posicionamento */
+            top: -12px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--primary-gradient);
@@ -428,12 +382,12 @@
             font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
-            z-index: 2; /* Garante que a tag fique acima do card */
+            z-index: 2;
         }
         .plan-card.popular {
             border-color: var(--primary);
             transform: scale(1.05);
-            z-index: 10; /* Aumenta o z-index do card popular para garantir sobreposição */
+            z-index: 10;
         }
         .plan-card.popular .btn-primary {
             background: var(--primary-gradient);
@@ -442,12 +396,12 @@
             margin-bottom: 0.5rem;
         }
         .plan-price {
-            font-size: 2.5rem; /* Ajuste de tamanho para igualar ao número */
+            font-size: 2.5rem;
             font-weight: 700;
             margin: 1rem 0;
         }
         .plan-price .number {
-            font-size: 2.5rem; /* Mesmo tamanho que .plan-price */
+            font-size: 2.5rem;
         }
         .plan-price span {
             font-size: 1rem;
@@ -455,7 +409,7 @@
             margin-left: 0.5rem;
         }
         .plan-savings {
-            color: #10b981; /* Green for savings */
+            color: #10b981;
             font-weight: 600;
             margin-bottom: 1.5rem;
         }
@@ -473,7 +427,6 @@
             color: var(--primary);
             margin-right: 0.75rem;
         }
-        /* Footer */
         footer {
             background: var(--bg-dark);
             border-top: 1px solid var(--border-dark);
@@ -525,7 +478,6 @@
             color: var(--text-gray);
             font-size: 0.9rem;
         }
-        /* Back to Top */
         #back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -549,7 +501,6 @@
             opacity: 1;
             visibility: visible;
         }
-        /* Animations */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -559,10 +510,9 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Mobile Menu */
         #mobile-menu {
             position: fixed;
-            top: 70px; /* Height of header */
+            top: 70px;
             left: 0;
             width: 100%;
             height: calc(100vh - 70px);
@@ -584,7 +534,6 @@
             flex-direction: column;
             gap: 1.5rem;
         }
-        /* Loading Spinner Placeholder for Form */
         .loading-spinner {
             display: none;
             width: 20px;
@@ -624,6 +573,7 @@
             </button>
         </div>
     </header>
+
     <!-- Mobile Menu -->
     <div id="mobile-menu">
         <ul>
@@ -633,31 +583,19 @@
             <li><a href="#plans" class="nav-link">Planos</a></li>
         </ul>
     </div>
+
     <!-- Hero -->
     <section id="home" class="hero">
         <div class="hero-content animate-on-scroll">
-            <h1>Desfrute de <span>3.000+ Canais</span> e <span>20.000+ Filmes</span></h1>
-            <p>Streamstv: A melhor experiência IPTV com qualidade 4K, conexões ilimitadas e todos os streamings inclusos.</p>
+            <h1>O seu universo de filmes, séries e canais em um só lugar</h1>
+            <p>Streaming moderno com interface intuitiva, conteúdo variado e qualidade premium. Tudo que você procura em um só app.</p>
             <div class="hero-btns">
                 <a href="https://wa.me/5587996255711?text=Olá,%20gostaria%20de%20solicitar%20o%20teste%20gratuito." class="btn btn-primary">Teste Grátis</a>
                 <a href="#plans" class="btn btn-secondary">Ver Planos</a>
             </div>
         </div>
-        <div class="stats">
-            <div class="stat-item animate-on-scroll">
-                <span class="stat-number" data-target="3000">0</span>
-                <span class="stat-label">Canais Ao Vivo</span>
-            </div>
-            <div class="stat-item animate-on-scroll">
-                <span class="stat-number" data-target="20000">0</span>
-                <span class="stat-label">Filmes & Séries</span>
-            </div>
-            <div class="stat-item animate-on-scroll">
-                <span class="stat-number">99.9%</span>
-                <span class="stat-label">Uptime</span>
-            </div>
-        </div>
     </section>
+
     <!-- Features -->
     <section id="features" class="features">
         <div class="container">
@@ -668,35 +606,36 @@
             <div class="features-grid">
                 <div class="card feature-card animate-on-scroll">
                     <div class="feature-icon">
-                        <i class="fas fa-satellite-dish"></i>
+                        <i class="fas fa-play-circle"></i>
                     </div>
-                    <h3>50.000+ Canais</h3>
-                    <p>Todos os canais de esportes, notícias, filmes, séries e muito mais.</p>
+                    <h3>Conteúdo Variado</h3>
+                    <p>Oferecemos uma vasta biblioteca de filmes, séries e canais ao vivo.</p>
                 </div>
                 <div class="card feature-card animate-on-scroll">
                     <div class="feature-icon">
-                        <i class="fas fa-video"></i>
+                        <i class="fas fa-tv"></i>
                     </div>
-                    <h3>Qualidade 4K/HD</h3>
-                    <p>Transmissão em alta definição para uma experiência visual imersiva.</p>
+                    <h3>Canais ao Vivo</h3>
+                    <p>Canais de entretenimento, esportes, notícias e muito mais.</p>
                 </div>
                 <div class="card feature-card animate-on-scroll">
                     <div class="feature-icon">
-                        <i class="fas fa-user-friends"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Conexões Ilimitadas</h3>
-                    <p>Assista em quantos dispositivos quiser, simultaneamente.</p>
+                    <h3>Disponível em Todos os Dispositivos</h3>
+                    <p>Assista no celular, tablet, smart TV e computador.</p>
                 </div>
                 <div class="card feature-card animate-on-scroll">
                     <div class="feature-icon">
                         <i class="fas fa-lock"></i>
                     </div>
-                    <h3>Segurança Total</h3>
-                    <p>Servidores dedicados e criptografia para proteger sua privacidade.</p>
+                    <h3>Segurança e Privacidade</h3>
+                    <p>Seus dados protegidos com criptografia de última geração.</p>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Testimonials -->
     <section id="testimonials" class="testimonials">
         <div class="container">
@@ -721,7 +660,7 @@
                             </div>
                         </div>
                     </div>
-                    <p>"A melhor IPTV que já usei! Qualidade, variedade e estabilidade incríveis. Recomendo demais!"</p>
+                    <p>"O melhor streaming que já usei! Interface intuitiva, conteúdo variado e qualidade impecável. Recomendo demais!"</p>
                 </div>
                 <div class="card testimonial-card animate-on-scroll">
                     <div class="testimonial-header">
@@ -739,7 +678,7 @@
                             </div>
                         </div>
                     </div>
-                    <p>"Sou fanático por futebol e fico impressionado com a quantidade e qualidade dos canais esportivos."</p>
+                    <p>"Sou fã de esportes e fico impressionado com a variedade de canais e a qualidade da transmissão."</p>
                 </div>
                 <div class="card testimonial-card animate-on-scroll">
                     <div class="testimonial-header">
@@ -757,7 +696,7 @@
                             </div>
                         </div>
                     </div>
-                    <p>"Ter todos os streamings em um só lugar é incrível. Economizei muito dinheiro."</p>
+                    <p>"A variedade de filmes e séries é incrível. Economizei dinheiro e ainda tenho mais opções do que antes."</p>
                 </div>
                 <div class="card testimonial-card animate-on-scroll">
                     <div class="testimonial-header">
@@ -775,47 +714,12 @@
                             </div>
                         </div>
                     </div>
-                    <p>"Depois de testar vários IPTVs, esse é de longe o melhor. Canais em 4K, filmes atualizados e um suporte que realmente resolve os problemas."</p>
-                </div>
-                <div class="card testimonial-card animate-on-scroll">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Cliente">
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>Juliana Santos</h4>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Meus filhos adoram os canais infantis e eu amo as séries e filmes. A família toda está satisfeita com a qualidade e variedade de conteúdo."</p>
-                </div>
-                <div class="card testimonial-card animate-on-scroll">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Cliente">
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>Marcos Vinícius</h4>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"O melhor investimento que fiz em entretenimento este ano. Todos os jogos de futebol, PPVs e ainda os streamings inclusos. Vale cada centavo!"</p>
+                    <p>"Interface moderna, conteúdo atualizado e suporte excelente. Vale cada centavo investido!"</p>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Plans -->
     <section id="plans" class="plans">
         <div class="container">
@@ -831,10 +735,10 @@
                     </div>
                     <ul class="plan-features">
                         <li><i class="fas fa-check"></i> 1 Mês de Acesso</li>
-                        <li><i class="fas fa-check"></i> 3.000+ Canais</li>
-                        <li><i class="fas fa-check"></i> 20.000+ Filmes e Séries</li>
-                        <li><i class="fas fa-check"></i> Qualidade 4K/HD</li>
-                        <li><i class="fas fa-check"></i> Conexões Ilimitadas</li>
+                        <li><i class="fas fa-check"></i> Conteúdo variado</li>
+                        <li><i class="fas fa-check"></i> Canais ao Vivo</li>
+                        <li><i class="fas fa-check"></i> Qualidade Full HD</li>
+                        <li><i class="fas fa-check"></i> Acesso em 2 Dispositivos</li>
                         <li><i class="fas fa-check"></i> Suporte 24h</li>
                     </ul>
                     <a href="https://wa.me/5587996255711?text=Olá,%20gostaria%20de%20assinar%20o%20plano%20Mensal%20no%20valor%20de%20R%24%2029,00." class="btn btn-primary">Assinar Agora</a>
@@ -848,10 +752,10 @@
                     </div>
                     <ul class="plan-features">
                         <li><i class="fas fa-check"></i> 3 Meses de Acesso</li>
-                        <li><i class="fas fa-check"></i> 3.000+ Canais</li>
-                        <li><i class="fas fa-check"></i> 20.000+ Filmes e Séries</li>
-                        <li><i class="fas fa-check"></i> Qualidade 4K/HD</li>
-                        <li><i class="fas fa-check"></i> Conexões Ilimitadas</li>
+                        <li><i class="fas fa-check"></i> Conteúdo variado</li>
+                        <li><i class="fas fa-check"></i> Canais ao Vivo</li>
+                        <li><i class="fas fa-check"></i> Qualidade Full HD</li>
+                        <li><i class="fas fa-check"></i> Acesso em 4 Dispositivos</li>
                         <li><i class="fas fa-check"></i> Suporte 24h Prioritário</li>
                     </ul>
                     <a href="https://wa.me/5587996255711?text=Olá,%20gostaria%20de%20assinar%20o%20plano%20Trimestral%20no%20valor%20de%20R%24%2079,00." class="btn btn-primary">Assinar Agora</a>
@@ -864,10 +768,10 @@
                     </div>
                     <ul class="plan-features">
                         <li><i class="fas fa-check"></i> 6 Meses de Acesso</li>
-                        <li><i class="fas fa-check"></i> 3.000+ Canais</li>
-                        <li><i class="fas fa-check"></i> 20.000+ Filmes e Séries</li>
-                        <li><i class="fas fa-check"></i> Qualidade 4K/HD</li>
-                        <li><i class="fas fa-check"></i> Conexões Ilimitadas</li>
+                        <li><i class="fas fa-check"></i> Conteúdo variado</li>
+                        <li><i class="fas fa-check"></i> Canais ao Vivo</li>
+                        <li><i class="fas fa-check"></i> Qualidade Full HD</li>
+                        <li><i class="fas fa-check"></i> Acesso em 4 Dispositivos</li>
                         <li><i class="fas fa-check"></i> Suporte 24h Prioritário</li>
                     </ul>
                     <a href="https://wa.me/5587996255711?text=Olá,%20gostaria%20de%20assinar%20o%20plano%20Semestral%20no%20valor%20de%20R%24%20149,90." class="btn btn-primary">Assinar Agora</a>
@@ -880,10 +784,10 @@
                     </div>
                     <ul class="plan-features">
                         <li><i class="fas fa-check"></i> 12 Meses de Acesso</li>
-                        <li><i class="fas fa-check"></i> 3.000+ Canais</li>
-                        <li><i class="fas fa-check"></i> 20.000+ Filmes e Séries</li>
-                        <li><i class="fas fa-check"></i> Qualidade 4K/HD</li>
-                        <li><i class="fas fa-check"></i> Conexões Ilimitadas</li>
+                        <li><i class="fas fa-check"></i> Conteúdo variado</li>
+                        <li><i class="fas fa-check"></i> Canais ao Vivo</li>
+                        <li><i class="fas fa-check"></i> Qualidade Full HD</li>
+                        <li><i class="fas fa-check"></i> Acesso em 6 Dispositivos</li>
                         <li><i class="fas fa-check"></i> Suporte 24h Prioritário</li>
                     </ul>
                     <a href="https://wa.me/5587996255711?text=Olá,%20gostaria%20de%20assinar%20o%20plano%20Anual%20no%20valor%20de%20R%24%20280,00." class="btn btn-primary">Assinar Agora</a>
@@ -891,6 +795,7 @@
             </div>
         </div>
     </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -900,12 +805,12 @@
                         <i class="fas fa-tv"></i>
                         <span>STREAMSTV</span>
                     </a>
-                    <p>O melhor serviço de IPTV com qualidade premium, variedade e segurança.</p>
+                    <p>O melhor streaming de entretenimento com filmes, séries e canais ao vivo em um só lugar.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -937,26 +842,26 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 Streamstv. Todos os direitos reservados.</p>
-                <p>Este serviço não transmite conteúdo protegido por direitos autorais sem permissão.</p>
+                <p>Streaming de entretenimento completo e legal.</p>
             </div>
         </div>
     </footer>
+
     <!-- Back to Top Button -->
     <button id="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
     <script>
-        // Mobile Menu Toggle
+        // Seu JavaScript permanece o mesmo
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
         });
-        // Close mobile menu when clicking a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
             });
         });
-        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -965,13 +870,12 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Adjust for fixed header
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
             });
         });
-        // Back to Top Button
         const backToTopButton = document.getElementById('back-to-top');
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 500) {
@@ -986,7 +890,6 @@
                 behavior: 'smooth'
             });
         });
-        // Animation on Scroll
         const observerOptions = {
             threshold: 0.1,
         };
@@ -1000,32 +903,6 @@
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
-        // Animated Counters for Stats
-        const statElements = document.querySelectorAll('.stat-number[data-target]');
-        const statObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const targetElement = entry.target;
-                    const targetValue = parseInt(targetElement.getAttribute('data-target'));
-                    const duration = 2000; // ms
-                    const increment = targetValue / (duration / 16); // 16ms per frame approx
-                    let current = 0;
-                    const updateCounter = () => {
-                        current += increment;
-                        if (current < targetValue) {
-                            targetElement.textContent = Math.floor(current).toLocaleString();
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            targetElement.textContent = targetValue.toLocaleString();
-                        }
-                    };
-                    updateCounter();
-                    statObserver.unobserve(entry.target); // Run only once
-                }
-            });
-        }, { threshold: 0.5 });
-        statElements.forEach(el => statObserver.observe(el));
     </script>
 </body>
 </html>
-
