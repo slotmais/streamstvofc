@@ -325,8 +325,13 @@
         }
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* 3 colunas no desktop */
             gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr; /* 1 coluna no mobile */
+            }
         }
         .testimonial-card {
             padding: 2rem;
@@ -373,6 +378,9 @@
             }
             .plan-price .number {
                 font-size: 2rem;
+            }
+            .plan-price span {
+                font-size: 0.9rem; /* Menor fonte no período */
             }
             .plan-features {
                 font-size: 0.9rem; /* Menor fonte nos recursos */
@@ -665,7 +673,7 @@
                 <div class="card testimonial-card animate-on-scroll">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente">
+                            <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Cliente"> <!-- Nova imagem -->
                         </div>
                         <div class="testimonial-info">
                             <h4>Ana Carolina</h4>
