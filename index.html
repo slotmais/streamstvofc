@@ -1,951 +1,1262 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NBHHV99N');</script>
-    <!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Streamstv - Aplicativo de Streaming Completo</title>
-    <meta name="description" content="O melhor aplicativo de streaming com filmes, séries e canais ao vivo. Qualidade premium, interface moderna e entretenimento ilimitado.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Seu CSS permanece o mesmo */
-        :root {
-            --bg-dark: #0a0a0a;
-            --bg-darker: #0f0f15;
-            --bg-dark-accent: #1a1a2a;
-            --primary: #0ea5e9;
-            --secondary: #8b5cf6;
-            --accent: #ec4899;
-            --primary-gradient: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            --text-light: #f0f0f0;
-            --text-gray: #a0a0a0;
-            --border-dark: #2a2a3a;
-            --glass-bg: rgba(10, 10, 10, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-            --shadow-glow: 0 0 15px rgba(14, 165, 233, 0.5), 0 0 30px rgba(139, 92, 246, 0.3);
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-darker);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        p {
-            color: var(--text-gray);
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        img {
-            max-width: 100%;
-            display: block;
-        }
-        ul {
-            list-style: none;
-        }
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 0.9rem;
-        }
-        .btn-primary {
-            background: var(--primary-gradient);
-            color: white;
-            box-shadow: var(--shadow-glow);
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(14, 165, 233, 0.7), 0 0 40px rgba(139, 92, 246, 0.5);
-        }
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        .btn-secondary:hover {
-            background: rgba(14, 165, 233, 0.1);
-        }
-        .card {
-            background: var(--bg-dark-accent);
-            border-radius: 16px;
-            box-shadow: var(--shadow-card);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: visible;
-            position: relative;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-        }
-        .section {
-            padding: 5rem 0;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .section-title p {
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-        .section-subtitle {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        .logo i {
-            color: var(--primary);
-        }
-        .logo span {
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        nav ul {
-            display: flex;
-            gap: 2rem;
-        }
-        .nav-link {
-            position: relative;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        .nav-link:hover {
-            color: var(--primary);
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-gradient);
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        @media (max-width: 768px) {
-            .desktop-nav {
-                display: none;
-            }
-            .mobile-menu-btn {
-                display: block;
-            }
-        }
-        .hero {
-            position: relative;
-            padding: 8rem 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            z-index: 0;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 0%, rgba(2, 6, 23, 0.95) 100%);
-            z-index: 1;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
-            text-stroke: 1px rgba(0, 0, 0, 0.5);
-            color: white;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2.5rem;
-            color: var(--text-light);
-            -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5);
-            text-stroke: 0.5px rgba(0, 0, 0, 0.5);
-        }
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-        .hero-btns .btn {
-            min-width: 200px;
-        }
-        @media (max-width: 768px) {
-            .hero {
-                padding: 6rem 0;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.2rem;
-            }
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            .hero-btns .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-        .features .section {
-            padding: 8rem 0 5rem 0;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        .feature-card {
-            padding: 2rem;
-            text-align: center;
-        }
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 0 auto 1.5rem;
-            font-size: 2.5rem;
-        }
-        .feature-card h3 {
-            margin-bottom: 1rem;
-        }
-        .testimonials .section {
-            padding: 8rem 0 5rem 0;
-        }
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 colunas no desktop */
-            gap: 2rem;
-        }
-        @media (max-width: 768px) {
-            .testimonials-grid {
-                grid-template-columns: 1fr; /* 1 coluna no mobile */
-            }
-        }
-        .testimonial-card {
-            padding: 2rem;
-            border-left: 4px solid var(--primary);
-        }
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        .testimonial-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
-        .testimonial-info h4 {
-            margin-bottom: 0.25rem;
-        }
-        .testimonial-rating {
-            color: #fbbf24;
-        }
-        .plans .section {
-            padding: 8rem 0 5rem 0;
-        }
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 colunas no desktop */
-            gap: 2rem;
-        }
-        @media (max-width: 768px) {
-            .plans-grid {
-                grid-template-columns: 1fr; /* 1 coluna no mobile */
-                gap: 1.5rem; /* Espaçamento reduzido */
-            }
-            .plan-card {
-                padding: 2rem; /* Padding reduzido */
-                margin: 0 1rem; /* Centralizado com margem */
-            }
-            .plan-price {
-                font-size: 2rem; /* Menor no mobile */
-            }
-            .plan-price .number {
-                font-size: 2rem;
-            }
-            .plan-price span {
-                font-size: 0.9rem; /* Menor fonte no período */
-            }
-            .plan-features {
-                font-size: 0.9rem; /* Menor fonte nos recursos */
-            }
-            .popular-tag {
-                top: -10px;
-                font-size: 0.7rem; /* Menor no mobile */
-            }
-        }
-        .plan-card {
-            padding: 3rem 2rem;
-            text-align: center;
-            border: 2px solid var(--border-dark);
-            z-index: 1;
-        }
-        .popular-tag {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-gradient);
-            color: white;
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            z-index: 2;
-        }
-        .plan-card.popular {
-            border-color: var(--primary);
-            transform: scale(1.05);
-            z-index: 10;
-        }
-        .plan-card.popular .btn-primary {
-            background: var(--primary-gradient);
-        }
-        .plan-header h3 {
-            margin-bottom: 0.5rem;
-        }
-        .plan-price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            display: flex; /* Usar flexbox */
-            flex-direction: column; /* Colocar itens em coluna */
-            align-items: center; /* Centralizar horizontalmente */
-        }
-        .plan-price .value-container {
-            display: flex; /* R$ e valor na mesma linha */
-            align-items: baseline; /* Alinhar pela base */
-            gap: 0.25rem; /* Espaçamento pequeno entre R$ e valor */
-        }
-        .plan-price .currency {
-            font-size: 1.5rem; /* Tamanho menor para R$ */
-        }
-        .plan-price .number {
-            font-size: 2.5rem; /* Tamanho do número */
-        }
-        .plan-price .period {
-            font-size: 1rem;
-            color: var(--text-gray);
-            margin-top: 0.5rem; /* Espaçamento acima do período */
-        }
-        .plan-savings {
-            color: #10b981;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-        .plan-features {
-            list-style: none;
-            margin: 2rem 0;
-            text-align: left;
-        }
-        .plan-features li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-        }
-        .plan-features li i {
-            color: var(--primary);
-            margin-right: 0.75rem;
-        }
-        footer {
-            background: var(--bg-dark);
-            border-top: 1px solid var(--border-dark);
-            padding: 4rem 0 2rem;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .footer-col h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-        .newsletter form {
-            display: flex;
-        }
-        .newsletter input {
-            flex: 1;
-            padding: 0.8rem 1.2rem;
-            background: var(--bg-dark-accent);
-            border: 1px solid var(--border-dark);
-            border-radius: 8px 0 0 8px;
-            color: var(--text-light);
-        }
-        .newsletter button {
-            background: var(--primary-gradient);
-            color: white;
-            border: none;
-            padding: 0 1.5rem;
-            border-radius: 0 8px 8px 0;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
-        .newsletter button:hover {
-            opacity: 0.9;
-        }
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-dark);
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-        #back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-gradient);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-glow);
-            z-index: 999;
-        }
-        #back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        #mobile-menu {
-            position: fixed;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            height: calc(100vh - 70px);
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            z-index: 999;
-            display: none;
-            flex-direction: column;
-            padding: 2rem;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-        #mobile-menu.active {
-            display: flex;
-            transform: translateX(0);
-        }
-        #mobile-menu ul {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        .loading-spinner {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-    </style>
+  <meta charset="UTF-8">
+  <title>Guia Básico de Eletricidade – Predial e Industrial</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      background-color: #f8fafc;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 25mm 20mm 20mm 20mm;
+      margin: 0 auto;
+      background: white;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      page-break-after: always;
+    }
+    .page:last-child {
+      page-break-after: auto;
+    }
+    .cover {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+      color: white;
+      text-align: center;
+      padding: 40mm 20mm !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #1e3a8a;
+    }
+    .cover h1 {
+      font-size: 42px;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    h2 {
+      font-size: 24px;
+      margin: 25px 0 15px 0;
+      color: #0f172a;
+      padding-bottom: 8px;
+      border-bottom: 3px solid #3b82f6;
+    }
+    p {
+      margin: 15px 0;
+      text-align: justify;
+    }
+    ul, ol {
+      margin: 15px 0 15px 25px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .highlight {
+      background-color: #dbeafe;
+      border-left: 4px solid #3b82f6;
+      padding: 15px;
+      border-radius: 0 6px 6px 0;
+      margin: 20px 0;
+    }
+    .warning {
+      background-color: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 15px;
+      border-radius: 0 6px 6px 0;
+      margin: 20px 0;
+    }
+    .table-container {
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+    }
+    th {
+      background-color: #3b82f6;
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #cbd5e1;
+    }
+    tr:nth-child(even) {
+      background-color: #f1f5f9;
+    }
+    .illustration {
+      text-align: center;
+      margin: 25px 0;
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 15px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer {
+      position: absolute;
+      bottom: 15mm;
+      left: 20mm;
+      right: 20mm;
+      text-align: center;
+      color: #64748b;
+      font-size: 12px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+    }
+    .page-number {
+      position: absolute;
+      bottom: 10mm;
+      right: 20mm;
+      font-weight: bold;
+      color: #64748b;
+    }
+    .icon-box {
+      display: flex;
+      justify-content: space-around;
+      margin: 25px 0;
+    }
+    .icon-item {
+      text-align: center;
+      width: 22%;
+    }
+    .svg-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 10px;
+    }
+    .checklist {
+      background-color: #f0fdf4;
+      border-left: 4px solid #10b981;
+      padding: 15px;
+      border-radius: 0 6px 6px 0;
+      margin: 20px 0;
+    }
+    .conclusion-box {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      margin: 25px 0;
+      border: 2px solid #3b82f6;
+    }
+    .color-sample {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    @media print {
+      body {
+        background: white;
+      }
+      .page {
+        box-shadow: none;
+        margin: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBHHV99N"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="#home" class="logo">
-                <i class="fas fa-tv"></i>
-                <span>STREAMSTV</span>
-            </a>
-            <nav class="desktop-nav">
-                <ul>
-                    <li><a href="#home" class="nav-link">Início</a></li>
-                    <li><a href="#features" class="nav-link">Recursos</a></li>
-                    <li><a href="#testimonials" class="nav-link">Depoimentos</a></li>
-                    <li><a href="#plans" class="nav-link">Planos</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-btn" id="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu">
-        <ul>
-            <li><a href="#home" class="nav-link">Início</a></li>
-            <li><a href="#features" class="nav-link">Recursos</a></li>
-            <li><a href="#testimonials" class="nav-link">Depoimentos</a></li>
-            <li><a href="#plans" class="nav-link">Planos</a></li>
-        </ul>
+  <!-- PÁGINA 1: CAPA -->
+  <div class="page cover">
+    <svg class="svg-icon" viewBox="0 0 100 100" style="width:120px;height:120px;margin-bottom:25px;">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="3"/>
+      <path d="M30 50 L45 50 L45 30" fill="none" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <path d="M55 50 L70 50 L70 70" fill="none" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="50" cy="50" r="8" fill="white"/>
+    </svg>
+    <h1>Guia Básico de Eletricidade</h1>
+    <h2 style="font-size:28px;margin-top:10px;color:#94a3b8;border-bottom:none;">Predial e Industrial</h2>
+    <div style="background:rgba(255,255,255,0.15);padding:20px 40px;border-radius:12px;margin:30px 0;font-size:22px;">
+      Manual prático para ajudantes e iniciantes
     </div>
+    <p style="position:absolute;bottom:30mm;font-size:16px;opacity:0.8;">Material didático para treinamento em campo</p>
+    <div class="page-number" style="color:white;bottom:20mm;">1</div>
+  </div>
 
-    <!-- Hero -->
-    <section id="home" class="hero">
-        <div class="hero-content animate-on-scroll">
-            <h1>O seu universo de filmes, séries e canais em um só lugar</h1>
-            <p>Streaming moderno com interface intuitiva, conteúdo variado e qualidade premium. Tudo que você procura em um só app.</p>
-            <div class="hero-btns">
-                <a href="https://wa.me/5587996255711?text=Olá,%20gostaria%20de%20solicitar%20o%20teste%20gratuito." class="btn btn-primary">Teste Grátis</a>
-                <a href="#plans" class="btn btn-secondary">Ver Planos</a>
-            </div>
-        </div>
-    </section>
+  <!-- PÁGINA 2: APRESENTAÇÃO -->
+  <div class="page">
+    <h2>Apresentação</h2>
+    <p><strong>Para quem é este guia?</strong></p>
+    <p>Este material foi feito especialmente para você que está começando a trabalhar como <strong>ajudante de eletricista</strong> em obras, manutenções prediais ou indústrias. Não precisa ser técnico para entender – vamos explicar tudo na prática, como se estivéssemos conversando na obra.</p>
+    
+    <div class="warning">
+      <strong>⚠️ Por que segurança vem primeiro?</strong><br>
+      Eletricidade não perdoa erros. Um descuido pode causar:<br>
+      • Choque elétrico (machuca ou mata)<br>
+      • Queimaduras graves<br>
+      • Incêndio na instalação<br><br>
+      <strong>Lembre-se:</strong> Nenhum serviço é tão urgente que precise ser feito com risco de vida.
+    </div>
+    
+    <p><strong>O que você vai aprender aqui:</strong></p>
+    <ul>
+      <li>✓ Reconhecer os componentes básicos (fios, disjuntores, tomadas)</li>
+      <li>✓ Entender as cores dos cabos e o que cada um significa</li>
+      <li>✓ Saber quais ferramentas usar e como manuseá-las com segurança</li>
+      <li>✓ Identificar os riscos mais comuns e como evitá-los</li>
+      <li>✓ Trabalhar sempre com supervisão de um profissional qualificado</li>
+    </ul>
+    
+    <div class="highlight">
+      <strong>Importante:</strong> Este guia ensina o básico para você ajudar com segurança. Você <strong>nunca</strong> deve fazer serviços elétricos sozinho sem estar devidamente qualificado e autorizado.
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="180" height="80">
+        <circle cx="50" cy="40" r="12" fill="#3b82f6"/>
+        <rect x="35" y="52" width="30" height="35" rx="3" fill="#64748b"/>
+        <path d="M35 65 L65 65" stroke="#1e293b" stroke-width="2"/>
+        <circle cx="150" cy="40" r="12" fill="#1e3a8a"/>
+        <rect x="135" y="52" width="30" height="35" rx="3" fill="#475569"/>
+        <path d="M135 65 L165 65" stroke="#0f172a" stroke-width="2" stroke-dasharray="4"/>
+        <path d="M60 55 L140 55" stroke="#f59e0b" stroke-width="3" stroke-dasharray="5,3"/>
+        <text x="100" y="85" text-anchor="middle" font-size="10" fill="#64748b">Supervisão profissional</text>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">2</div>
+  </div>
 
-    <!-- Features -->
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Recursos Exclusivos</h2>
-                <p>Oferecemos os melhores recursos para sua experiência de entretenimento.</p>
-            </div>
-            <div class="features-grid">
-                <div class="card feature-card animate-on-scroll">
-                    <div class="feature-icon">
-                        <i class="fas fa-play-circle"></i>
-                    </div>
-                    <h3>Conteúdo Variado</h3>
-                    <p>Oferecemos uma vasta biblioteca de filmes, séries e canais ao vivo.</p>
-                </div>
-                <div class="card feature-card animate-on-scroll">
-                    <div class="feature-icon">
-                        <i class="fas fa-tv"></i>
-                    </div>
-                    <h3>Canais ao Vivo</h3>
-                    <p>Canais de entretenimento, esportes, notícias e muito mais.</p>
-                </div>
-                <div class="card feature-card animate-on-scroll">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Disponível em Todos os Dispositivos</h3>
-                    <p>Assista no celular, tablet, smart TV e computador.</p>
-                </div>
-                <div class="card feature-card animate-on-scroll">
-                    <div class="feature-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Segurança e Privacidade</h3>
-                    <p>Seus dados protegidos com criptografia de última geração.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- PÁGINA 3: O QUE É ELETRICIDADE -->
+  <div class="page">
+    <h2>O que é Eletricidade?</h2>
+    <p><strong>Energia invisível que faz as coisas funcionarem</strong></p>
+    <p>Imagine a eletricidade como um "rio invisível" que corre dentro dos fios. Quando você liga um interruptor, abre uma "portinha" para essa energia passar e chegar até a lâmpada, motor ou aparelho.</p>
+    
+    <p><strong>Exemplos do seu dia a dia:</strong></p>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Situação</th>
+          <th>O que acontece</th>
+        </tr>
+        <tr>
+          <td>Lâmpada acende</td>
+          <td>A energia elétrica chega até o filamento e o aquece até brilhar</td>
+        </tr>
+        <tr>
+          <td>Tomada carrega celular</td>
+          <td>A energia flui do poste → fiação da casa → tomada → seu celular</td>
+        </tr>
+        <tr>
+          <td>Motor de elevador</td>
+          <td>A energia "empurra" o motor para girar e levantar o elevador</td>
+        </tr>
+      </table>
+    </div>
+    
+    <p><strong>Fluxo básico da energia:</strong></p>
+    <div style="text-align:center;background:#f1f5f9;padding:15px;border-radius:8px;margin:20px 0;font-family:monospace;">
+      [Poste de energia]<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+      [Medidor de luz]<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+      [Quadro de distribuição]<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+      [Fios nos cômodos]<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+      [Lâmpadas, tomadas, equipamentos]
+    </div>
+    
+    <div class="highlight">
+      <strong>Dica prática:</strong> Sempre que vir um equipamento ligado, lembre-se: existe um caminho invisível de energia vindo da rua até aquele ponto. Respeite esse caminho.
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <path d="M20 50 L40 50" stroke="#3b82f6" stroke-width="3" fill="none"/>
+        <path d="M40 50 L45 40 L55 60 L65 40 L75 60 L85 40 L95 60 L105 50" stroke="#3b82f6" stroke-width="3" fill="none"/>
+        <path d="M105 50 L130 50" stroke="#3b82f6" stroke-width="3" fill="none"/>
+        <circle cx="150" cy="50" r="15" fill="#fbbf24"/>
+        <path d="M145 45 L155 55 M145 55 L155 45" stroke="#b45309" stroke-width="2"/>
+        <text x="150" y="80" text-anchor="middle" font-size="10" fill="#64748b">Lâmpada acesa</text>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">3</div>
+  </div>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>O Que Nossos Clientes Dizem</h2>
-                <p>Avaliações reais de clientes satisfeitos com nosso serviço.</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="card testimonial-card animate-on-scroll">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Cliente"> <!-- Nova imagem -->
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>Ana Carolina</h4>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"O melhor streaming que já usei! Interface intuitiva, conteúdo variado e qualidade impecável. Recomendo demais!"</p>
-                </div>
-                <div class="card testimonial-card animate-on-scroll">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente">
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>Ricardo Almeida</h4>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Sou fã de esportes e fico impressionado com a variedade de canais e a qualidade da transmissão."</p>
-                </div>
-                <div class="card testimonial-card animate-on-scroll">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente">
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>Fernanda Gomes</h4>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"A variedade de filmes e séries é incrível. Economizei dinheiro e ainda tenho mais opções do que antes."</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- PÁGINA 4: CONCEITOS FUNDAMENTAIS -->
+  <div class="page">
+    <h2>Conceitos Fundamentais</h2>
+    <p><strong>O que são elétrons? (Explicação sem complicação)</strong></p>
+    <p>Elétrons são partículinhas minúsculas que ficam dentro dos átomos (tudo ao seu redor é feito de átomos). Quando a energia elétrica "passa", esses elétrons se movem dentro do fio – como pessoas andando em uma escada rolante.</p>
+    
+    <p><strong>Comparação com água (fácil de entender):</strong></p>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Conceito elétrico</th>
+          <th>Comparação com água</th>
+        </tr>
+        <tr>
+          <td>Fio elétrico</td>
+          <td>Cano de água</td>
+        </tr>
+        <tr>
+          <td>Corrente elétrica</td>
+          <td>Água correndo dentro do cano</td>
+        </tr>
+        <tr>
+          <td>Tensão</td>
+          <td>Pressão da água na torneira</td>
+        </tr>
+        <tr>
+          <td>Resistência</td>
+          <td>Torneira meio fechada (dificulta a passagem)</td>
+        </tr>
+      </table>
+    </div>
+    
+    <p><strong>Exemplo prático:</strong><br>
+    Quando você abre totalmente a torneira (baixa resistência), a água sai com força (alta corrente). Se a torneira estiver quase fechada (alta resistência), a água sai devagar (baixa corrente).</p>
+    
+    <div class="warning">
+      <strong>Atenção:</strong> Assim como água sob pressão pode machucar, eletricidade sob tensão também. Sempre desligue a energia antes de mexer!
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <rect x="10" y="30" width="80" height="40" rx="5" fill="#94a3b8" opacity="0.3"/>
+        <path d="M10 50 L90 50" stroke="#3b82f6" stroke-width="4" stroke-dasharray="5,3"/>
+        <text x="50" y="25" text-anchor="middle" font-size="10" fill="#64748b">Fio elétrico</text>
+        
+        <rect x="110" y="30" width="80" height="40" rx="5" fill="#94a3b8" opacity="0.3"/>
+        <path d="M110 50 L190 50" stroke="#0f172a" stroke-width="4"/>
+        <circle cx="120" cy="50" r="4" fill="#0f172a"/>
+        <circle cx="140" cy="50" r="4" fill="#0f172a"/>
+        <circle cx="160" cy="50" r="4" fill="#0f172a"/>
+        <circle cx="180" cy="50" r="4" fill="#0f172a"/>
+        <text x="150" y="25" text-anchor="middle" font-size="10" fill="#64748b">Elétrons em movimento</text>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">4</div>
+  </div>
 
-    <!-- Plans -->
-    <section id="plans" class="plans">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Escolha Seu Plano Ideal</h2>
-                <p>Assinaturas mensais com os mesmos recursos e descontos por antecipação.</p>
-            </div>
-            <div class="plans-grid">
-                <div class="card plan-card animate-on-scroll">
-                    <div class="plan-header">
-                        <h3>Plano Mensal</h3>
-                        <div class="plan-price">
-                            <div class="value-container">
-                                <span class="currency">R$</span>
-                                <span class="number">29,00</span>
-                            </div>
-                            <span class="period">mês</span>
-                        </div>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 1 Mês de Acesso</li>
-                        <li><i class="fas fa-check"></i> Conteúdo variado</li>
-                        <li><i class="fas fa-check"></i> Canais ao Vivo</li>
-                        <li><i class="fas fa-check"></i> Qualidade Full HD</li>
-                        <li><i class="fas fa-check"></i> Acesso em 2 Dispositivos</li>
-                        <li><i class="fas fa-check"></i> Suporte 24h</li>
-                    </ul>
-                    <a href="https://wa.me/5587996255711?text=Olá,%20gostaria%20de%20assinar%20o%20plano%20Mensal%20no%20valor%20de%20R%24%2029,00." class="btn btn-primary">Assinar Agora</a>
-                </div>
-                <div class="card plan-card popular animate-on-scroll">
-                    <div class="popular-tag">Mais Popular</div>
-                    <div class="plan-header">
-                        <h3>Plano Trimestral</h3>
-                        <div class="plan-price">
-                            <div class="value-container">
-                                <span class="currency">R$</span>
-                                <span class="number">79,00</span>
-                            </div>
-                            <span class="period">3 meses</span>
-                        </div>
-                        <div class="plan-savings">Economize R$ 8,00</div>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 3 Meses de Acesso</li>
-                        <li><i class="fas fa-check"></i> Conteúdo variado</li>
-                        <li><i class="fas fa-check"></i> Canais ao Vivo</li>
-                        <li><i class="fas fa-check"></i> Qualidade Full HD</li>
-                        <li><i class="fas fa-check"></i> Acesso em 4 Dispositivos</li>
-                        <li><i class="fas fa-check"></i> Suporte 24h Prioritário</li>
-                    </ul>
-                    <a href="https://wa.me/5587996255711?text=Olá,%20gostaria%20de%20assinar%20o%20plano%20Trimestral%20no%20valor%20de%20R%24%2079,00." class="btn btn-primary">Assinar Agora</a>
-                </div>
-                <div class="card plan-card animate-on-scroll">
-                    <div class="plan-header">
-                        <h3>Plano Semestral</h3>
-                        <div class="plan-price">
-                            <div class="value-container">
-                                <span class="currency">R$</span>
-                                <span class="number">149,90</span>
-                            </div>
-                            <span class="period">6 meses</span>
-                        </div>
-                        <div class="plan-savings">Economize R$ 24,10</div>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 6 Meses de Acesso</li>
-                        <li><i class="fas fa-check"></i> Conteúdo variado</li>
-                        <li><i class="fas fa-check"></i> Canais ao Vivo</li>
-                        <li><i class="fas fa-check"></i> Qualidade Full HD</li>
-                        <li><i class="fas fa-check"></i> Acesso em 4 Dispositivos</li>
-                        <li><i class="fas fa-check"></i> Suporte 24h Prioritário</li>
-                    </ul>
-                    <a href="https://wa.me/5587996255711?text=Olá,%20gostaria%20de%20assinar%20o%20plano%20Semestral%20no%20valor%20de%20R%24%20149,90." class="btn btn-primary">Assinar Agora</a>
-                </div>
-                <div class="card plan-card animate-on-scroll">
-                    <div class="plan-header">
-                        <h3>Plano Anual</h3>
-                        <div class="plan-price">
-                            <div class="value-container">
-                                <span class="currency">R$</span>
-                                <span class="number">280,00</span>
-                            </div>
-                            <span class="period">12 meses</span>
-                        </div>
-                        <div class="plan-savings">Economize R$ 68,00</div>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 12 Meses de Acesso</li>
-                        <li><i class="fas fa-check"></i> Conteúdo variado</li>
-                        <li><i class="fas fa-check"></i> Canais ao Vivo</li>
-                        <li><i class="fas fa-check"></i> Qualidade Full HD</li>
-                        <li><i class="fas fa-check"></i> Acesso em 6 Dispositivos</li>
-                        <li><i class="fas fa-check"></i> Suporte 24h Prioritário</li>
-                    </ul>
-                    <a href="https://wa.me/5587996255711?text=Olá,%20gostaria%20de%20assinar%20o%20plano%20Anual%20no%20valor%20de%20R%24%20280,00." class="btn btn-primary">Assinar Agora</a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- PÁGINA 5: GRANDEZAS ELÉTRICAS -->
+  <div class="page">
+    <h2>Grandezas Elétricas Básicas</h2>
+    <p>Você não precisa decorar números, mas é bom conhecer o que cada termo significa:</p>
+    
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Grandeza</th>
+          <th>O que é</th>
+          <th>Unidade</th>
+          <th>Exemplo prático</th>
+        </tr>
+        <tr>
+          <td><strong>Tensão</strong></td>
+          <td>"Força" que empurra a energia</td>
+          <td>Volts (V)</td>
+          <td>Tomada brasileira: 127V ou 220V</td>
+        </tr>
+        <tr>
+          <td><strong>Corrente</strong></td>
+          <td>"Quantidade" de energia passando</td>
+          <td>Ampère (A)</td>
+          <td>Chuveiro puxa ~20A; lâmpada LED: ~0,1A</td>
+        </tr>
+        <tr>
+          <td><strong>Resistência</strong></td>
+          <td>Dificuldade para a energia passar</td>
+          <td>Ohms (Ω)</td>
+          <td>Fio grosso = baixa resistência</td>
+        </tr>
+        <tr>
+          <td><strong>Potência</strong></td>
+          <td>"Trabalho" que o aparelho faz</td>
+          <td>Watts (W)</td>
+          <td>Lâmpada: 15W; Chuveiro: 5.500W</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="highlight" style="margin-top:20px;">
+      <strong>Tabela rápida para lembrar:</strong><br>
+      ALTA TENSÃO (220V) → Mais "força" → Risco maior de choque<br>
+      ALTA CORRENTE (20A) → Mais "volume" → Fio precisa ser mais grosso<br>
+      ALTA POTÊNCIA (5.500W) → Mais consumo → Conta de luz mais cara
+    </div>
+    
+    <div class="icon-box">
+      <div class="icon-item">
+        <svg class="svg-icon" viewBox="0 0 100 100" style="fill:#3b82f6;">
+          <path d="M50 10 L65 40 L95 40 L75 60 L85 90 L50 75 L15 90 L25 60 L5 40 L35 40 Z"/>
+        </svg>
+        <div>Tensão (V)</div>
+      </div>
+      <div class="icon-item">
+        <svg class="svg-icon" viewBox="0 0 100 100" style="fill:#10b981;">
+          <circle cx="50" cy="50" r="35" fill="none" stroke="#10b981" stroke-width="6"/>
+          <path d="M30 50 A20 20 0 1 1 70 50" fill="none" stroke="#10b981" stroke-width="6" stroke-dasharray="15,10"/>
+        </svg>
+        <div>Corrente (A)</div>
+      </div>
+      <div class="icon-item">
+        <svg class="svg-icon" viewBox="0 0 100 100" style="fill:#f59e0b;">
+          <rect x="20" y="40" width="60" height="20" rx="3"/>
+        </svg>
+        <div>Resistência (Ω)</div>
+      </div>
+      <div class="icon-item">
+        <svg class="svg-icon" viewBox="0 0 100 100" style="fill:#ef4444;">
+          <circle cx="50" cy="50" r="30" fill="none" stroke="#ef4444" stroke-width="4"/>
+          <line x1="50" y1="20" x2="50" y2="80" stroke="#ef4444" stroke-width="4"/>
+          <line x1="20" y1="50" x2="80" y2="50" stroke="#ef4444" stroke-width="4"/>
+        </svg>
+        <div>Potência (W)</div>
+      </div>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">5</div>
+  </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="#home" class="logo">
-                        <i class="fas fa-tv"></i>
-                        <span>STREAMSTV</span>
-                    </a>
-                    <p>O melhor streaming de entretenimento com filmes, séries e canais ao vivo em um só lugar.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Links Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#features">Recursos</a></li>
-                        <li><a href="#testimonials">Depoimentos</a></li>
-                        <li><a href="#plans">Planos</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Suporte</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Tutoriais</a></li>
-                        <li><a href="#">Aplicativos</a></li>
-                        <li><a href="#">Status do Serviço</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col newsletter">
-                    <h3>Newsletter</h3>
-                    <p>Receba novidades e ofertas exclusivas.</p>
-                    <form>
-                        <input type="email" placeholder="Seu e-mail">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Streamstv. Todos os direitos reservados.</p>
-                <p>Streaming de entretenimento completo e legal.</p>
-            </div>
-        </div>
-    </footer>
+  <!-- PÁGINA 6: LEI DE OHM -->
+  <div class="page">
+    <h2>Lei de Ohm (Básico)</h2>
+    <p><strong>Não precisa decorar fórmula – entenda a ideia</strong></p>
+    <p>A Lei de Ohm mostra como tensão, corrente e resistência se relacionam:</p>
+    <div class="highlight" style="text-align:center;font-size:18px;padding:20px;">
+      Quanto maior a tensão → mais corrente passa<br>
+      Quanto maior a resistência → menos corrente passa
+    </div>
+    
+    <p><strong>Exemplo real na obra:</strong></p>
+    <p>Você vai instalar uma lâmpada halógena de 50W em 127V.</p>
+    <ul>
+      <li>A lâmpada tem uma resistência interna (filamento fino)</li>
+      <li>Quando liga, a tensão "empurra" a corrente através dessa resistência</li>
+      <li>Resultado: o filamento esquenta e brilha</li>
+    </ul>
+    
+    <p><strong>O que acontece se errar?</strong><br>
+    Se colocar lâmpada de 12V em tomada de 127V → corrente excessiva → lâmpada queima na hora (puf!).</p>
+    
+    <div class="warning">
+      <strong>Regra prática do ajudante:</strong> Sempre confira a tensão do equipamento antes de ligar. Nunca force adaptações sem orientação.
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <rect x="20" y="30" width="40" height="40" rx="5" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="40" y="53" text-anchor="middle" font-weight="bold" font-size="14">V↑</text>
+        
+        <path d="M60 50 L80 50" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+        
+        <rect x="80" y="30" width="40" height="40" rx="5" fill="#ffedd5" stroke="#f59e0b" stroke-width="2"/>
+        <text x="100" y="53" text-anchor="middle" font-weight="bold" font-size="14">R</text>
+        
+        <path d="M120 50 L140 50" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+        
+        <rect x="140" y="30" width="40" height="40" rx="5" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+        <text x="160" y="53" text-anchor="middle" font-weight="bold" font-size="14">A→</text>
+        
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">6</div>
+  </div>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top"><i class="fas fa-arrow-up"></i></button>
+  <!-- PÁGINA 7: CORRENTE ALTERNADA -->
+  <div class="page">
+    <h2>Corrente Alternada (CA)</h2>
+    <p><strong>Onde você encontra no dia a dia:</strong></p>
+    <ul>
+      <li>✅ Todas as tomadas da casa</li>
+      <li>✅ Lâmpadas e interruptores</li>
+      <li>✅ Motores de geladeira, ventilador, elevador</li>
+      <li>✅ Quadros elétricos prediais e industriais</li>
+    </ul>
+    
+    <p><strong>O que significa "alternada"?</strong></p>
+    <p>A corrente muda de direção 60 vezes por segundo (no Brasil). Isso permite transportar energia por longas distâncias com menos perda – por isso a rede elétrica usa CA.</p>
+    
+    <p><strong>Tensões comuns no Brasil:</strong></p>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Local</th>
+          <th>Tensão</th>
+        </tr>
+        <tr>
+          <td>Residências (SP, MG)</td>
+          <td>127V</td>
+        </tr>
+        <tr>
+          <td>Residências (RJ, RS)</td>
+          <td>220V</td>
+        </tr>
+        <tr>
+          <td>Comércio/Indústria</td>
+          <td>220V ou 380V (trifásico)</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="warning">
+      <strong>Atenção na obra:</strong> Sempre pergunte ao eletricista qual a tensão do local antes de conectar qualquer equipamento. Misturar 127V com 220V queima aparelhos!
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <path d="M20 50 L30 35 L40 65 L50 35 L60 65 L70 35 L80 65 L90 35 L100 65 L110 35 L120 65 L130 35 L140 65 L150 35 L160 65 L170 35 L180 65" 
+              stroke="#3b82f6" stroke-width="3" fill="none"/>
+        <line x1="20" y1="80" x2="180" y2="80" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5,5"/>
+        <text x="100" y="95" text-anchor="middle" font-size="10" fill="#64748b">Onda senoidal - 60 ciclos por segundo</text>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">7</div>
+  </div>
 
-    <script>
-        // Seu JavaScript permanece o mesmo
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        });
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        const backToTopButton = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 500) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        const observerOptions = {
-            threshold: 0.1,
-        };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
+  <!-- PÁGINA 8: CORRENTE CONTÍNUA -->
+  <div class="page">
+    <h2>Corrente Contínua (CC)</h2>
+    <p><strong>Onde você encontra no dia a dia:</strong></p>
+    <ul>
+      <li>✅ Baterias de carro (12V)</li>
+      <li>✅ Pilhas de controle remoto (1,5V)</li>
+      <li>✅ Carregador de celular (converte CA para CC)</li>
+      <li>✅ Painéis solares</li>
+      <li>✅ No-breaks e UPS</li>
+    </ul>
+    
+    <p><strong>O que significa "contínua"?</strong></p>
+    <p>A corrente flui sempre na mesma direção – do polo positivo (+) para o negativo (-), como água descendo uma rampa reta.</p>
+    
+    <p><strong>Diferença prática:</strong></p>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Característica</th>
+          <th>CA (Tomada)</th>
+          <th>CC (Bateria)</th>
+        </tr>
+        <tr>
+          <td>Direção</td>
+          <td>Muda 60x/s</td>
+          <td>Fixa</td>
+        </tr>
+        <tr>
+          <td>Perigo de choque</td>
+          <td>Alto</td>
+          <td>Baixo (em tensões &lt; 50V)</td>
+        </tr>
+        <tr>
+          <td>Armazenamento</td>
+          <td>Não armazena</td>
+          <td>Armazena em baterias</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="warning">
+      <strong>Dica importante:</strong> Mesmo sendo "mais segura", baterias de carro (12V) podem causar faíscas fortes se curto-circuitadas. Nunca encoste ferramentas metálicas nos dois polos ao mesmo tempo!
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <rect x="30" y="35" width="50" height="30" rx="5" fill="#94a3b8"/>
+        <circle cx="40" cy="50" r="8" fill="#ef4444"/>
+        <circle cx="70" cy="50" r="8" fill="#64748b"/>
+        <text x="40" y="45" text-anchor="middle" font-size="12" fill="white">+</text>
+        <text x="70" y="45" text-anchor="middle" font-size="12" fill="white">-</text>
+        
+        <path d="M85 50 L165 50" stroke="#10b981" stroke-width="4" marker-end="url(#arrow2)"/>
+        
+        <defs>
+          <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#10b981"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">8</div>
+  </div>
+
+  <!-- PÁGINA 9: PREDIAL VS INDUSTRIAL -->
+  <div class="page">
+    <h2>Diferença entre Elétrica Predial e Industrial</h2>
+    
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Aspecto</th>
+          <th>Predial (Casas/Prédios)</th>
+          <th>Industrial (Fábricas)</th>
+        </tr>
+        <tr>
+          <td><strong>Tensão</strong></td>
+          <td>127V / 220V</td>
+          <td>220V / 380V / 440V</td>
+        </tr>
+        <tr>
+          <td><strong>Potência</strong></td>
+          <td>Até 50 kW (residencial)</td>
+          <td>Centenas de kW ou MW</td>
+        </tr>
+        <tr>
+          <td><strong>Equipamentos</strong></td>
+          <td>Lâmpadas, tomadas, chuveiros</td>
+          <td>Motores grandes, máquinas, fornos</td>
+        </tr>
+        <tr>
+          <td><strong>Risco</strong></td>
+          <td>Choque, incêndio</td>
+          <td>Choque grave, arco elétrico, explosão</td>
+        </tr>
+        <tr>
+          <td><strong>Proteção</strong></td>
+          <td>Disjuntores simples</td>
+          <td>Disjuntores + relés + sistemas complexos</td>
+        </tr>
+      </table>
+    </div>
+    
+    <p><strong>Riscos específicos da indústria:</strong></p>
+    <div class="warning">
+      ⚠️ <strong>Arco elétrico:</strong> Faísca gigante que acontece em curto-circuito de alta potência – pode queimar tudo ao redor em milissegundos<br>
+      ⚠️ <strong>Motores travados:</strong> Se um motor grande trava, puxa corrente enorme e superaquece os fios<br>
+      ⚠️ <strong>Ambientes perigosos:</strong> Poeira combustível ou gases exigem equipamentos especiais (à prova de explosão)
+    </div>
+    
+    <div class="highlight">
+      <strong>Regra de ouro:</strong> Na indústria, <strong>nunca</strong> trabalhe sem o bloqueio de energia (trava com cadeado no disjuntor). Um colega pode religar sem saber que você está mexendo!
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">9</div>
+  </div>
+
+  <!-- PÁGINA 10: COMPONENTES BÁSICOS -->
+  <div class="page">
+    <h2>Componentes Elétricos Básicos</h2>
+    
+    <p><strong>1. Disjuntor</strong></p>
+    <p>• <strong>O que faz:</strong> Desliga automaticamente se passar corrente demais (evita incêndio)<br>
+    • <strong>Como identificar:</strong> Alavanca que desarma para baixo quando desliga<br>
+    • <strong>Dica:</strong> Se desarmar, desligue aparelhos antes de religar</p>
+    
+    <p><strong>2. Tomada</strong></p>
+    <p>• <strong>Partes:</strong> Fase (energia), Neutro (retorno), Terra (proteção)<br>
+    • <strong>Tipos:</strong> 10A (lâmpadas, TV) e 20A (chuveiro, ar-condicionado)</p>
+    
+    <p><strong>3. Interruptor</strong></p>
+    <p>• <strong>Função:</strong> Liga/desliga a passagem de energia para lâmpadas<br>
+    • <strong>Não tem neutro:</strong> Só interrompe a fase</p>
+    
+    <p><strong>4. Lâmpadas</strong></p>
+    <p>• <strong>Incandescente:</strong> Filamento quente (gasta mais energia)<br>
+    • <strong>LED:</strong> Diodos emissores de luz (econômica, dura mais)</p>
+    
+    <p><strong>5. Cabos</strong></p>
+    <p>• <strong>Bitola:</strong> Espessura do fio (quanto mais grosso, mais corrente aguenta)<br>
+    • <strong>Isolação:</strong> Capa plástica colorida que protege contra choque</p>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <rect x="10" y="30" width="30" height="40" rx="3" fill="#94a3b8"/>
+        <circle cx="25" cy="50" r="8" fill="#ef4444"/>
+        <text x="25" y="80" text-anchor="middle" font-size="8">Disjuntor</text>
+        
+        <rect x="50" y="35" width="25" height="30" rx="2" fill="#64748b"/>
+        <circle cx="58" cy="45" r="3" fill="#f59e0b"/>
+        <circle cx="67" cy="45" r="3" fill="#3b82f6"/>
+        <circle cx="58" cy="55" r="3" fill="#10b981"/>
+        <text x="62" y="80" text-anchor="middle" font-size="8">Tomada</text>
+        
+        <rect x="90" y="40" width="20" height="20" rx="3" fill="#475569"/>
+        <circle cx="100" cy="50" r="4" fill="#fbbf24"/>
+        <text x="100" y="80" text-anchor="middle" font-size="8">Interruptor</text>
+        
+        <circle cx="130" cy="50" r="12" fill="#fbbf24" stroke="#b45309" stroke-width="1"/>
+        <text x="130" y="80" text-anchor="middle" font-size="8">Lâmpada</text>
+        
+        <path d="M155 40 L185 60" stroke="#3b82f6" stroke-width="6" stroke-linecap="round"/>
+        <text x="170" y="80" text-anchor="middle" font-size="8">Cabo</text>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">10</div>
+  </div>
+
+  <!-- PÁGINA 11: QUADROS ELÉTRICOS -->
+  <div class="page">
+    <h2>Quadros Elétricos</h2>
+    <p><strong>Para que serve o quadro?</strong></p>
+    <p>É o "cérebro" da instalação elétrica. Distribui a energia da rua para todos os circuitos da casa ou fábrica.</p>
+    
+    <p><strong>Partes básicas:</strong></p>
+    <div style="background:#f1f5f9;padding:15px;border-radius:8px;font-family:monospace;margin:15px 0;">
+      ┌─────────────────────────────────┐<br>
+      │  [DISJUNTOR GERAL] ← Corta tudo │<br>
+      ├─────────────────────────────────┤<br>
+      │  [DR] ← Protege contra choque   │<br>
+      ├─────────────────────────────────┤<br>
+      │  [DPS] ← Protege contra raios   │<br>
+      ├─────────────────────────────────┤<br>
+      │  [DISJUNTOR CIRCUITO 1] Luzes   │<br>
+      │  [DISJUNTOR CIRCUITO 2] Tomadas │<br>
+      │  [DISJUNTOR CIRCUITO 3] Chuveiro│<br>
+      └─────────────────────────────────┘
+    </div>
+    
+    <p><strong>Organização básica:</strong></p>
+    <ul>
+      <li>✅ Disjuntor geral no topo</li>
+      <li>✅ Circuitos separados por função (luzes, tomadas, força)</li>
+      <li>✅ Etiquetas identificando cada circuito</li>
+      <li>✅ Espaço livre para futuras ampliações</li>
+    </ul>
+    
+    <div class="warning">
+      <strong>Proibido:</strong> Colocar fita isolante ou moedas para "segurar" disjuntor desarmado. Isso elimina a proteção e causa incêndio!
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <rect x="40" y="15" width="120" height="70" rx="5" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+        <rect x="50" y="25" width="100" height="12" rx="2" fill="#3b82f6"/>
+        <text x="100" y="34" text-anchor="middle" font-size="9" fill="white">Disjuntor Geral</text>
+        
+        <rect x="50" y="42" width="48" height="12" rx="2" fill="#10b981"/>
+        <text x="74" y="51" text-anchor="middle" font-size="8" fill="white">DR</text>
+        
+        <rect x="102" y="42" width="48" height="12" rx="2" fill="#f59e0b"/>
+        <text x="126" y="51" text-anchor="middle" font-size="8" fill="white">DPS</text>
+        
+        <rect x="50" y="59" width="32" height="12" rx="2" fill="#94a3b8"/>
+        <text x="66" y="68" text-anchor="middle" font-size="7" fill="white">Luzes</text>
+        
+        <rect x="84" y="59" width="32" height="12" rx="2" fill="#94a3b8"/>
+        <text x="100" y="68" text-anchor="middle" font-size="7" fill="white">Tomadas</text>
+        
+        <rect x="118" y="59" width="32" height="12" rx="2" fill="#ef4444"/>
+        <text x="134" y="68" text-anchor="middle" font-size="7" fill="white">Chuveiro</text>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">11</div>
+  </div>
+
+  <!-- PÁGINA 12: CORES DOS CABOS -->
+  <div class="page">
+    <h2>Cores dos Cabos Elétricos (Padrão Brasileiro)</h2>
+    
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Cor</th>
+          <th>Função</th>
+          <th>Perigo</th>
+        </tr>
+        <tr>
+          <td><span class="color-sample" style="background-color:#000;"></span> Preto, Vermelho, Marrom</td>
+          <td>FASE → Traz energia da rua</td>
+          <td>⚠️ <strong>ALTO RISCO</strong> – Pode dar choque mesmo com aparelho desligado</td>
+        </tr>
+        <tr>
+          <td><span class="color-sample" style="background-color:#3b82f6;"></span> Azul claro</td>
+          <td>NEUTRO → Retorno da energia</td>
+          <td>Baixo risco (normalmente sem tensão)</td>
+        </tr>
+        <tr>
+          <td><span class="color-sample" style="background:linear-gradient(to right, #10b981, #f59e0b);"></span> Verde/Amarelo</td>
+          <td>TERRA → Proteção contra choque</td>
+          <td>Seguro (só conduz em falha)</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="highlight">
+      <strong>Regras de ouro:</strong><br>
+      ✅ <strong>Nunca</strong> confunda fase com neutro<br>
+      ✅ <strong>Sempre</strong> verifique com chave teste antes de tocar<br>
+      ✅ <strong>Nunca</strong> use fio terra como neutro (crime e perigoso!)<br>
+      ✅ Em emendas, mantenha as cores originais
+    </div>
+    
+    <p><strong>Exemplo prático:</strong><br>
+    Tomada com fio fase invertido → aparelho desligado na tomada ainda pode ter energia interna → risco de choque ao trocar lâmpada!</p>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <rect x="60" y="30" width="80" height="40" rx="5" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+        
+        <circle cx="75" cy="50" r="8" fill="#000"/>
+        <text x="75" y="70" text-anchor="middle" font-size="8">Fase</text>
+        
+        <circle cx="100" cy="50" r="8" fill="#3b82f6"/>
+        <text x="100" y="70" text-anchor="middle" font-size="8">Neutro</text>
+        
+        <circle cx="125" cy="50" r="8" fill="url(#greenyellow)"/>
+        <text x="125" y="70" text-anchor="middle" font-size="8">Terra</text>
+        
+        <defs>
+          <linearGradient id="greenyellow" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#10b981"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">12</div>
+  </div>
+
+  <!-- PÁGINA 13: ATERRAMENTO -->
+  <div class="page">
+    <h2>Aterramento Elétrico</h2>
+    
+    <p><strong>O que é?</strong></p>
+    <p>É um fio verde/amarelo que liga os equipamentos diretamente à terra (haste enterrada no solo).</p>
+    
+    <p><strong>Para que serve?</strong></p>
+    <ul>
+      <li>✅ Desvia a energia em caso de falha (ex.: fio solto dentro da geladeira)</li>
+      <li>✅ Evita choque quando você toca no equipamento</li>
+      <li>✅ Protege contra raios</li>
+    </ul>
+    
+    <p><strong>O que acontece sem aterramento?</strong></p>
+    <div style="background:#fef2f2;padding:12px;border-radius:8px;margin:15px 0;font-size:14px;">
+      Falha interna na máquina → Carcaça fica energizada → Você toca → CHOQUE!
+    </div>
+    
+    <p><strong>Com aterramento:</strong></p>
+    <div style="background:#ecfdf5;padding:12px;border-radius:8px;margin:15px 0;font-size:14px;">
+      Falha interna → Energia vai direto para o solo pelo fio terra → Disjuntor desarma → Você fica seguro
+    </div>
+    
+    <div class="warning">
+      <strong>Verificação rápida:</strong><br>
+      Todas as tomadas de 3 pinos devem ter o pino central conectado ao fio terra. Se não tiver, a proteção não funciona!
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <rect x="70" y="20" width="60" height="40" rx="5" fill="#94a3b8"/>
+        <text x="100" y="43" text-anchor="middle" font-size="10" fill="white">Geladeira</text>
+        
+        <path d="M100 60 L100 85" stroke="#10b981" stroke-width="4" stroke-dasharray="5,3"/>
+        <path d="M100 85 L85 95 L115 95 Z" fill="#10b981"/>
+        
+        <text x="100" y="15" text-anchor="middle" font-size="9" fill="#ef4444">⚠️ Falha!</text>
+        <path d="M115 40 L140 40 L140 70 L105 70" stroke="#ef4444" stroke-width="2" stroke-dasharray="4"/>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">13</div>
+  </div>
+
+  <!-- PÁGINA 14: PROTEÇÕES ELÉTRICAS -->
+  <div class="page">
+    <h2>Proteções Elétricas</h2>
+    
+    <p><strong>1. Disjuntor termomagnético</strong></p>
+    <p>• <strong>Protege contra:</strong> Curto-circuito e sobrecarga<br>
+    • <strong>Como funciona:</strong> Desarma com calor (sobrecarga) ou campo magnético (curto)</p>
+    
+    <p><strong>2. DR (Dispositivo Diferencial Residual)</strong></p>
+    <p>• <strong>Protege contra:</strong> Choque elétrico<br>
+    • <strong>Como funciona:</strong> Detecta se parte da energia "vazou" pelo seu corpo → desarma em 0,03 segundos<br>
+    • <strong>Teste mensal:</strong> Aperte o botão "TESTAR" – deve desarmar</p>
+    
+    <p><strong>3. DPS (Dispositivo de Proteção contra Surtos)</strong></p>
+    <p>• <strong>Protege contra:</strong> Raios e picos de tensão<br>
+    • <strong>Onde fica:</strong> Próximo ao medidor de energia<br>
+    • <strong>Importante:</strong> Não evita raios diretos, mas protege equipamentos</p>
+    
+    <div class="highlight">
+      <strong>Combinação ideal em residências:</strong><br>
+      ✅ Disjuntor geral + DR + DPS no quadro principal<br>
+      ✅ Disjuntores individuais para cada circuito
+    </div>
+    
+    <div class="warning">
+      <strong>Atenção:</strong> DR não protege contra curto-circuito! Precisa trabalhar junto com disjuntor.
+    </div>
+    
+    <div class="icon-box">
+      <div class="icon-item">
+        <svg class="svg-icon" viewBox="0 0 100 100" style="fill:#3b82f6;">
+          <rect x="20" y="30" width="60" height="40" rx="5"/>
+          <circle cx="50" cy="50" r="8" fill="#bfdbfe"/>
+        </svg>
+        <div>Disjuntor</div>
+      </div>
+      <div class="icon-item">
+        <svg class="svg-icon" viewBox="0 0 100 100" style="fill:#10b981;">
+          <rect x="20" y="30" width="60" height="40" rx="5"/>
+          <path d="M35 45 L45 55 L65 35" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div>DR</div>
+      </div>
+      <div class="icon-item">
+        <svg class="svg-icon" viewBox="0 0 100 100" style="fill:#f59e0b;">
+          <rect x="20" y="30" width="60" height="40" rx="5"/>
+          <path d="M40 35 L60 35 L50 55 Z" fill="white"/>
+        </svg>
+        <div>DPS</div>
+      </div>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">14</div>
+  </div>
+
+  <!-- PÁGINA 15: FERRAMENTAS -->
+  <div class="page">
+    <h2>Ferramentas Básicas do Eletricista</h2>
+    
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Ferramenta</th>
+          <th>Para quê</th>
+          <th>Cuidado essencial</th>
+        </tr>
+        <tr>
+          <td>Chave de fenda isolada</td>
+          <td>Apertar parafusos em bornes</td>
+          <td>Verificar se a capa não está rachada</td>
+        </tr>
+        <tr>
+          <td>Alicate universal</td>
+          <td>Cortar, segurar, dobrar fios</td>
+          <td>Usar só para trabalhos desenergizados</td>
+        </tr>
+        <tr>
+          <td>Multímetro</td>
+          <td>Medir tensão, corrente, continuidade</td>
+          <td>Começar sempre na escala mais alta</td>
+        </tr>
+        <tr>
+          <td>Chave teste</td>
+          <td>Identificar fase (acende quando toca fase)</td>
+          <td>Testar antes em local conhecido</td>
+        </tr>
+        <tr>
+          <td>Luvas isoladas</td>
+          <td>Proteção contra choque</td>
+          <td>Verificar por furos antes de usar</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="checklist">
+      <strong>Checklist antes de usar ferramenta:</strong><br>
+      ☑️ Cabo sem rachaduras<br>
+      ☑️ Cabo sem emendas com fita isolante<br>
+      ☑️ Plugue em bom estado<br>
+      ☑️ Ferramenta seca (nunca usar molhada)
+    </div>
+    
+    <div class="warning">
+      <strong>Proibido:</strong> Usar faca, chave comum ou alicate sem isolação para trabalhar com eletricidade!
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <path d="M30 70 L45 40 L60 40 L70 30 L80 30 L90 40 L105 40 L120 70" 
+              fill="#94a3b8" stroke="#64748b" stroke-width="1"/>
+        <rect x="65" y="25" width="10" height="15" rx="2" fill="#64748b"/>
+        
+        <path d="M140 40 L160 40 L160 30 L170 30 L170 70 L160 70 L160 60 L140 60 Z" 
+              fill="#94a3b8" stroke="#64748b" stroke-width="1"/>
+        <circle cx="150" cy="50" r="6" fill="#64748b"/>
+        
+        <text x="100" y="90" text-anchor="middle" font-size="9" fill="#64748b">Ferramentas com isolação adequada</text>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">15</div>
+  </div>
+
+  <!-- PÁGINA 16: SEGURANÇA -->
+  <div class="page">
+    <h2>Segurança em Serviços Elétricos</h2>
+    
+    <p><strong>EPIs obrigatórios (mínimo):</strong></p>
+    <ul>
+      <li>✅ Capacete de segurança</li>
+      <li>✅ Luvas isoladas classe 00 (até 500V)</li>
+      <li>✅ Calçado isolante com biqueira de aço</li>
+      <li>✅ Óculos de proteção (para trabalhos com arco)</li>
+      <li>✅ Roupas de algodão (não usar sintéticos – derretem em arco elétrico)</li>
+    </ul>
+    
+    <p><strong>Procedimento ANTES de começar:</strong></p>
+    <ol>
+      <li><strong>Comunique</strong> ao responsável que vai trabalhar no circuito</li>
+      <li><strong>Desligue</strong> o disjuntor correspondente</li>
+      <li><strong>Trave</strong> com cadeado pessoal (na indústria)</li>
+      <li><strong>Verifique</strong> com multímetro/chave teste que não há tensão</li>
+      <li><strong>Sinalize</strong> a área com placa "NÃO LIGUE – MANUTENÇÃO EM ANDAMENTO"</li>
+    </ol>
+    
+    <div class="checklist">
+      <strong>Checklist de segurança (decore):</strong><br>
+      ☑️ Energia desligada?<br>
+      ☑️ Verificado com equipamento?<br>
+      ☑️ Área sinalizada?<br>
+      ☑️ Ferramentas isoladas?<br>
+      ☑️ EPIs corretos?
+    </div>
+    
+    <div class="warning">
+      <strong>NUNCA:</strong><br>
+      ❌ Trabalhar sozinho em alta tensão<br>
+      ❌ Assumir que o circuito está desligado sem testar<br>
+      ❌ Usar anéis, pulseiras ou correntes metálicas
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">16</div>
+  </div>
+
+  <!-- PÁGINA 17: ERROS COMUNS -->
+  <div class="page">
+    <h2>Erros Comuns de Iniciantes</h2>
+    
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Erro</th>
+          <th>Consequência</th>
+          <th>Como evitar</th>
+        </tr>
+        <tr>
+          <td>Emendar fase com neutro</td>
+          <td>Curto-circuito → faísca → queimadura</td>
+          <td>Sempre identificar cores antes de emendar</td>
+        </tr>
+        <tr>
+          <td>Ignorar o fio terra</td>
+          <td>Choque ao tocar equipamento com falha</td>
+          <td>Nunca cortar ou ignorar o fio verde/amarelo</td>
+        </tr>
+        <tr>
+          <td>Trabalhar com energia ligada</td>
+          <td>Choque fatal</td>
+          <td>Desligar disjuntor e testar antes</td>
+        </tr>
+        <tr>
+          <td>Usar fita isolante velha</td>
+          <td>Isolação falha → curto</td>
+          <td>Usar fita nova e fazer 3 voltas completas</td>
+        </tr>
+        <tr>
+          <td>Forçar plugue quebrado</td>
+          <td>Contato ruim → superaquecimento</td>
+          <td>Trocar o plugue, não improvisar</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="warning">
+      <strong>História real (para aprender):</strong><br>
+      João precisava trocar uma tomada. Achou que o disjuntor estava desligado, mas era de outro circuito. Ao tocar nos fios com alicate, levou choque forte e caiu da escada. Resultado: 3 costelas quebradas e trauma psicológico.<br><br>
+      <strong>Lições:</strong> Sempre testar com chave antes de tocar. Nunca confiar só na memória.
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <circle cx="60" cy="50" r="25" fill="#fef2f2" stroke="#ef4444" stroke-width="3"/>
+        <text x="60" y="55" text-anchor="middle" font-size="24" font-weight="bold" fill="#ef4444">X</text>
+        <text x="60" y="85" text-anchor="middle" font-size="9" fill="#64748b">Perigo!</text>
+        
+        <circle cx="140" cy="50" r="25" fill="#ecfdf5" stroke="#10b981" stroke-width="3"/>
+        <path d="M130 55 L137 62 L150 45" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="140" y="85" text-anchor="middle" font-size="9" fill="#64748b">Seguro</text>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">17</div>
+  </div>
+
+  <!-- PÁGINA 18: BOAS PRÁTICAS -->
+  <div class="page">
+    <h2>Boas Práticas no Dia a Dia</h2>
+    
+    <p><strong>Organização do trabalho:</strong></p>
+    <ul>
+      <li>✅ Mantenha a área de trabalho limpa e seca</li>
+      <li>✅ Guarde ferramentas no lugar certo após o uso</li>
+      <li>✅ Separe lixo elétrico (fios, embalagens) do lixo comum</li>
+    </ul>
+    
+    <p><strong>Identificação de circuitos:</strong></p>
+    <ul>
+      <li>✅ Etiquete todos os disjuntores com caneta permanente</li>
+      <li>✅ Use cores diferentes para circuitos (ex.: vermelho=luzes, azul=tomadas)</li>
+      <li>✅ Anote no quadro principal o que cada disjuntor controla</li>
+    </ul>
+    
+    <p><strong>Comunicação com o responsável:</strong></p>
+    <ul>
+      <li>✅ Avise antes de desligar qualquer disjuntor</li>
+      <li>✅ Reporte qualquer anomalia (cheiro de queimado, disjuntor desarmando muito)</li>
+      <li>✅ Peça ajuda quando não entender algo – não tenha vergonha</li>
+    </ul>
+    
+    <div class="checklist">
+      <strong>Checklist final do ajudante:</strong><br>
+      ☑️ Entendi o que preciso fazer?<br>
+      ☑️ Energia está desligada e testada?<br>
+      ☑️ Tenho as ferramentas certas?<br>
+      ☑️ Meu EPI está correto?<br>
+      ☑️ O eletricista responsável sabe que estou trabalhando aqui?
+    </div>
+    
+    <div class="highlight">
+      <strong>Lembrete:</strong> Um bom ajudante é aquele que faz o trabalho certo <strong>e</strong> volta para casa inteiro no final do dia.
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">18</div>
+  </div>
+
+  <!-- PÁGINA 19: NORMAS NR-10 -->
+  <div class="page">
+    <h2>Noções Básicas de Normas (NR-10)</h2>
+    
+    <p><strong>O que é a NR-10?</strong></p>
+    <p>É a norma brasileira que define regras de segurança para trabalhos com eletricidade. Vale para todos – da residência à grande indústria.</p>
+    
+    <p><strong>Pontos essenciais para o ajudante:</strong></p>
+    <ul>
+      <li>✅ <strong>Só trabalha com eletricidade quem tem curso específico</strong></li>
+      <li>✅ <strong>Todo serviço deve ter supervisão de profissional qualificado</strong></li>
+      <li>✅ <strong>É obrigatório desligar a energia antes de mexer</strong> (exceto casos especiais com procedimento)</li>
+      <li>✅ <strong>O empregador deve fornecer EPIs e treinamento</strong></li>
+    </ul>
+    
+    <p><strong>Sua responsabilidade como ajudante:</strong></p>
+    <ul>
+      <li>✔️ Seguir as orientações do eletricista responsável</li>
+      <li>✔️ Usar os EPIs fornecidos</li>
+      <li>✔️ Não improvisar soluções sem autorização</li>
+      <li>✔️ Comunicar riscos imediatamente</li>
+    </ul>
+    
+    <div class="warning">
+      <strong>Atenção:</strong> Se o patrão mandar você fazer serviço elétrico sem treinamento ou EPI, ele está descumprindo a lei. Você tem o direito de recusar trabalho inseguro.
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <rect x="40" y="25" width="120" height="50" rx="8" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+        <text x="100" y="48" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e3a8a">NR-10</text>
+        <text x="100" y="65" text-anchor="middle" font-size="10" fill="#3b82f6">Segurança em Instalações e Serviços em Eletricidade</text>
+        
+        <path d="M100 75 L100 90" stroke="#10b981" stroke-width="3"/>
+        <path d="M95 90 L105 90 L100 98 Z" fill="#10b981"/>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">19</div>
+  </div>
+
+  <!-- PÁGINA 20: CONCLUSÃO -->
+  <div class="page">
+    <h2>Conclusão</h2>
+    
+    <p><strong>Segurança não é opcional – é obrigação</strong></p>
+    <p>Você aprendeu o básico para:</p>
+    <ul>
+      <li>✅ Reconhecer componentes elétricos</li>
+      <li>✅ Entender as cores dos fios e suas funções</li>
+      <li>✅ Usar ferramentas com cuidado</li>
+      <li>✅ Priorizar a segurança em todos os momentos</li>
+    </ul>
+    
+    <p><strong>Próximos passos para sua carreira:</strong></p>
+    <ul>
+      <li>➡️ Faça um curso profissionalizante de eletricista</li>
+      <li>➡️ Estude a NR-10 completa</li>
+      <li>➡️ Pratique sempre com supervisão</li>
+      <li>➡️ Busque especializações (predial, industrial, solar)</li>
+    </ul>
+    
+    <div class="warning">
+      <strong>Aviso final:</strong><br>
+      Este material é introdutório e não substitui formação técnica.<br>
+      Nunca execute serviços elétricos sem qualificação e supervisão.<br>
+      Sua vida vale mais que qualquer serviço urgente.
+    </div>
+    
+    <div class="conclusion-box">
+      <h3 style="margin-top:0;color:#1e3a8a;">⚠️ LEMBRE-SE SEMPRE ⚠️</h3>
+      <p style="font-size:20px;font-weight:600;margin:15px 0;">
+        Energia desligada + Verificação com equipamento + EPI correto = Trabalho seguro
+      </p>
+    </div>
+    
+    <div class="illustration">
+      <svg viewBox="0 0 200 100" width="200" height="100">
+        <circle cx="100" cy="45" r="25" fill="#3b82f6"/>
+        <path d="M85 55 L95 65 L115 45" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M30 85 L170 85" stroke="#fbbf24" stroke-width="3" stroke-dasharray="10,5"/>
+        <text x="100" y="95" text-anchor="middle" font-size="10" fill="#64748b">Volte para casa em segurança</text>
+      </svg>
+    </div>
+    
+    <div class="footer">Guia Básico de Eletricidade – Predial e Industrial | Material didático para treinamento</div>
+    <div class="page-number">20</div>
+  </div>
+
 </body>
 </html>
+
